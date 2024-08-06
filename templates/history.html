@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Explore the rich history of VXBot. Learn about our journey, milestones, and significant events that have shaped the development of VXBot's innovative projects.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat History</title>
+    <link rel="icon" type="image/png" href="https://sites.ipagepro.com/minsky-cottone-cpas-pc/wp-content/uploads/sites/231/2022/12/google.png">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #52B2BF;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center-top;
+            height: 100vh;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 24px;
+            padding-top: 8px;
+            margin-bottom: 20px;
+        }
+
+        #chat-history {
+            background-color: snow;
+            border: 1px solid #ddd;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            max-width: 400px;
+            width: 80%;
+            margin: 5px 15px 15px 15px;
+            max-height: 85vh;
+            overflow-y: auto;
+        }
+
+        .message {
+            margin: 5px 0;
+            margin: 0 10px 0 10px;
+            padding: 10px; /* Added padding */
+            border: 1px solid black; /* Added a border */
+            border-radius: 5px;
+        }
+
+        .message + .message {
+            margin-top: 10px;
+        }
+
+#assist-toggle {
+    display: none;
+}
+
+#assist-button {
+    position: fixed;
+    top: 12px;
+    left: 6px;
+    background: #000;
+    color: #fff;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: opacity 0.3s;
+    z-index: 999;
+    -webkit-tap-highlight-color: transparent;
+}
+
+#assist-button p::before {
+    content: "\f0c9"; /* FontAwesome bars icon (default) */
+    font-family: 'Font Awesome 6 Free'; /* Font Awesome 6 class */
+    font-weight: 900;
+    font-size: 30px;
+}
+
+#assist-toggle:checked + #assist-button p::before {
+    content: "\f00d"; /* FontAwesome times icon (checked) */
+}
+
+#assist-toggle:checked + #assist-button + #assist-icons {
+    display: block;
+}
+
+#assist-icons {
+    display: none;
+    position: fixed;
+    top: 82px;
+    left: 12px;
+    z-index: 998;
+}
+
+#assist-icons a {
+    display: block;
+    background-color: #0077d9;
+    color: #fff;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    text-decoration: none;
+    transform: translateY(50px); /* Move the icons behind the button */
+    opacity: 0; /* Make them initially invisible */
+    transition: transform 0.3s, opacity 0.3s;
+    -webkit-tap-highlight-color: transparent;
+}
+
+@keyframes pop-up {
+    0% {
+        transform: translateY(-55px); /* Start behind the button */
+        opacity: 0; /* Initially invisible */
+    }
+    100% {
+        transform: translateY(0); /* Pop up to their original position */
+        opacity: 1; /* Fully visible */
+    }
+}
+
+#assist-icons a:nth-child(1) {
+    animation: pop-up 0.50s ease 0.20s forwards; /* Delay the animation for the first icon */
+}
+
+#assist-icons a:nth-child(2) {
+    animation: pop-up 0.45s ease 0.18s forwards; /* Delay the animation for the second icon */
+}
+
+#assist-icons a:nth-child(3) {
+    animation: pop-up 0.40s ease 0.16s forwards; /* Delay the animation for the second icon */
+}
+
+#assist-icons a:nth-child(4) {
+    animation: pop-up 0.35s ease 0.14s forwards; /* Delay the animation for the second icon */
+}
+
+#assist-icons a:nth-child(5) {
+    animation: pop-up 0.30s ease 0.12s forwards; /* Delay the animation for the second icon */
+}
+
+#assist-icons a:nth-child(6) {
+    animation: pop-up 0.25s ease 0.10s forwards; /* Delay the animation for the second icon */
+}
+
+#assist-icons a:nth-child(7) {
+    animation: pop-up 0.20s ease 0.08s forwards; /* Delay the animation for the second icon */
+}
+
+.tooltip::before {
+    content: attr(name);
+    display: block;
+    position: absolute;
+    background-color: #000;
+    color: #fff;
+    padding: 0 10px 0 10px;
+    border-radius: 10px;
+    min-width: 40px;
+    font-size: 10px;
+    text-align: center;
+    opacity: 0;
+    transform: translateX(50px);
+    transition: opacity 0s, transform 0.3s;
+    z-index: 1;
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+.tooltip:hover::before {
+    transform: translateX(50px);
+}
+
+.tooltip::after {
+  content: "";
+  position: absolute;
+  top: 30%;
+  left: 75%;
+  margin-left: 5px;
+  border-width: 8px;
+  border-style: solid;
+  visibility: hidden;
+  border-color: transparent #000 transparent transparent;
+}
+
+.tooltip:hover::before, .tooltip:hover::after {
+  opacity: 1;
+  visibility: visible;
+}
+
+#assist-icons a:hover {
+    background-color: #0056b3;
+}
+.contact-form {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #fff;
+    padding: 20px 40px 20px 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    max-width: 200px;
+    border-radius: 10px;
+    animation: slide-up 0.5s ease-out;
+}
+
+    @keyframes slide-up {
+        from {
+            transform: translateY(100%);
+        }
+        to {
+            transform: translateY(0);
+        }
+    }
+
+.contact-form h2 {
+    margin: 0;
+    color: #0074d9;
+}
+
+.form-group {
+    margin: 10px 0;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: none;
+}
+
+.form-group textarea {
+    height: 100px;
+}
+
+.form-group button {
+    background-color: #0074d9;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.form-group button[type="button"] {
+    background-color: #ccc;
+    margin-left: 10px;
+}
+
+#contact-button:hover {
+    opacity: 1;
+}
+
+#contact-form.active {
+    display: block;
+}
+
+
+        .div-container {
+            display: flex;
+            background: #000;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            color: white;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+    #custom-confirm-dialog {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 110%;
+        background: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(5px);
+        z-index: 11;
+        text-align: center;
+    }
+
+    .custom-confirm-content {
+        position: absolute;
+        top: 45%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 5px 0px #ccc;
+        z-index: 13;
+    }
+
+    #custom-confirm-dialog p {
+        margin: 0;
+        font-size: 16px;
+    }
+
+    #custom-confirm-dialog button {
+        margin: 10px;
+        padding: 10px 15px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+#history-menu {
+    display: none;
+    position: absolute;
+    background: white;
+    border: 2px solid snow;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 5px 0;
+    right: 10px;
+    top: 56px;
+    z-index: 2;
+}
+
+@media (min-width: 1024px) {
+    #history-menu {
+        padding: 10px 0;
+    }
+}
+
+#history-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+#history-menu ul li {
+    text-align: left; /* Align fonts to the left */
+    padding: 5px 5px;
+    display: block;
+    transition: background-color 0.2s;
+    border-bottom: 1px solid #ccc; /* Add lines between options */
+}
+
+#history-menu ul li:first-child {
+    border-top: 0px solid #ccc; /* Add top border for the first option */
+}
+
+#history-menu ul li:last-child {
+    border-bottom: none; /* Remove the bottom border for the last option */
+}
+
+#history-menu ul li:hover {
+    background: #f0f0f0; /* Change background color on hover */
+}
+
+#history-menu ul li a {
+    text-decoration: none;
+    color: #333; /* Change text color */
+    font-size: 12px;
+    display: block;
+}
+
+.arrow-up {
+    position: absolute;
+        width: 0;
+        height: 0;
+        border-left: 7px solid transparent;
+        border-right: 7px solid transparent;
+        border-bottom: 12px solid white; /* Adjust the color and size as needed */
+        top: -14px;
+        right: 6px; /* No need to change the arrow styles */
+}
+
+#history-menu a {
+    display: block;
+    text-decoration: none;
+    color: black;
+    margin: 5px 0;
+}
+
+ </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="div-container">
+    <div class="new-menu">
+    <input type="checkbox" id="assist-toggle"> <!-- Hidden checkbox for assist toggle -->
+    <label for="assist-toggle" id="assist-button"> <!-- Assist button label -->
+        <p></p> <!-- Empty <i> tag for the FontAwesome icon -->
+    </label>
+    <div id="assist-icons">
+        <a href="/" class="tooltip" name="Home"><i class="fas fa-home"></i></a>
+        <a href="/tutorial" class="tooltip" name="Tutorial"><i class="fa-brands fa-leanpub"></i></a>
+        <a href="/login" class="tooltip" name="Login"><i class="fas fa-sign-in-alt"></i></a>
+        <a href="/bot"class="tooltip" name="Chatbot"><i class="fa-solid fa-robot"></i></a>
+        <a href="/details"class="tooltip" name="About"><i class="fa-solid fa-circle-info"></i></a>
+        <a id="contact-button" class="tooltip" name="contact"><i class="fas fa-envelope"></i></a>
+        <a class="tooltip" name="Logout"><i class="fas fa-sign-out-alt" id="logout-link"></i></a>
+    </div>
+    </div>
+        <h1>Chat History</h1>
+    <i class="fas fa-cog" id="history-icon" style="margin-right: 15px; font-size: 20px; user-select: none; cursor: pointer;"></i>
+    <div class="dropdown-menu" id="history-menu" style="user-select: none; cursor: pointer;">
+        <div class="arrow-up"></div>
+        <ul>
+            <li><a id="clear-history-option">Clear History</a></li>
+            <li><a onclick="downloadChatHistory()">Download History</a></li>
+        </ul>
+    </div>
+    </div>
+        <div class="contact-form" id="contact-form">
+        <h2>Contact Us</h2>
+        <form id="myForm" action="/submit_form" method="post">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" required></textarea>
+            </div>
+            <div class="form-group">
+                <button type="submit">Send</button>
+                <button type="button" id="close-button">Close</button>
+            </div>
+        </form>
+        <div id="messageDiv"></div>
+    </div>
+    <div class="overlay"></div>
+    <div id="chat-history" style="margin-bottom: 10px;"></div>
+    <div id="custom-confirm-dialog" class="overlay">
+    <div class="custom-confirm-content">
+        <p>Are you sure you want to logout?</p>
+        <button id="confirm-logout">Yes</button>
+        <button id="cancel-logout">No</button>
+    </div>
+    </div>
+    <script>
+     document.addEventListener('DOMContentLoaded', function () {
+            var isLogged = localStorage.getItem('isLogin');
+
+            if (isLogged !== 'true') {
+                // User is not logged in, redirect to the home page and show an alert
+                alert('Please login to access this page.');
+                window.location.href = '/';
+            }
+        });
+    const chatHistory = JSON.parse(localStorage.getItem("chatHistory"));
+    const chatHistoryContainer = document.getElementById("chat-history");
+
+    if (chatHistory) {
+        chatHistory.forEach((message) => {
+            const messageElement = document.createElement("div");
+            messageElement.className = "message";
+            messageElement.textContent = message;
+            chatHistoryContainer.appendChild(messageElement);
+        });
+    }
+
+    const historyIcon = document.getElementById('history-icon');
+    const historyMenu = document.getElementById('history-menu');
+const clearHistoryOption = document.getElementById('clear-history-option');
+const downloadHistoryOption = document.getElementById('download-history-option');
+
+historyIcon.addEventListener('click', function () {
+    if (historyMenu.style.display === 'none' || historyMenu.style.display === '') {
+        historyMenu.style.display = 'block';
+    } else {
+        historyMenu.style.display = 'none';
+    }
+});
+
+clearHistoryOption.addEventListener('click', function () {
+    // Implement the logic to clear history here
+    localStorage.removeItem('chatHistory');
+    chatHistoryContainer.innerHTML = '';
+    historyMenu.style.display = 'none';
+});
+
+function downloadChatHistory() {
+    const chatHistory = JSON.parse(localStorage.getItem("chatHistory"));
+    if (chatHistory) {
+        const chatText = chatHistory.join('\n'); // Join chat messages with newline characters
+
+        const blob = new Blob([chatText], { type: 'text/plain' });
+
+        const url = window.URL.createObjectURL(blob);
+
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'chat_history.txt'; // Specify the filename
+
+        a.click();
+
+        window.URL.revokeObjectURL(url);
+    } else {
+        alert("No chat history available to download.");
+    }
+}
+            document.getElementById("contact-button").addEventListener("click", function() {
+               var contactForm = document.getElementById("contact-form");
+               contactForm.classList.toggle("active");
+            });
+
+            document.getElementById("close-button").addEventListener("click", function() {
+               var contactForm = document.getElementById("contact-form");
+               contactForm.classList.remove("active");
+            })
+            function displayMessage(message) {
+            const form = document.getElementById("myForm");
+            const messageDiv = document.getElementById("messageDiv");
+
+            messageDiv.textContent = message;
+            messageDiv.style.color = "green";
+            messageDiv.style.fontSize = "10px";
+
+            form.reset();
+            setTimeout(function () {
+               messageDiv.textContent= "";
+            }, 2000);
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const form = document.getElementById("myForm");
+
+            form.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            const formData = new FormData(form);
+
+            fetch("/submit_form", {
+               method: "POST",
+               body: formData
+            })
+            .then(response => response.text())
+            .then(data => {
+               displayMessage(data);
+            })
+            .catch(error => {
+               displayMessage("Data submission failed.");
+            });
+          });
+        });
+
+
+    document.getElementById('logout-link').addEventListener('click', function () {
+        var isLogged = localStorage.getItem('isLogin');
+
+        if (isLogged === 'true') {
+            document.getElementById('custom-confirm-dialog').style.display = 'block';
+        } else {
+            alert("You are not logged in.");
+        }
+    });
+
+    document.getElementById('confirm-logout').addEventListener('click', function () {
+        localStorage.setItem('isLogin', 'false');
+        window.location.href = '/logout';
+    });
+
+    document.getElementById('cancel-logout').addEventListener('click', function () {
+        document.getElementById('custom-confirm-dialog').style.display = 'none';
+    });
+
+    </script>
+</body>
+</html>
