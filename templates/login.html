@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en-IN" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"></noscript>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="Login to your account to access personalized features.">
+    <title>Login & Signup</title>
+    <link rel="icon" type="image/png" href="https://sites.ipagepro.com/minsky-cottone-cpas-pc/wp-content/uploads/sites/231/2022/12/google.png">
+    <style>
+        html,body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+        body {
+            background: #eeeccc;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+        }
+        .body-home {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+        }
+        .div-container {
+            display: flex;
+            justify-content: left;
+            background-color: #000;
+            color: white;
+            padding: 20px 10px 15px;
+            height: 35px;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        .form-container {
+            background: #cccfff;
+            width: 300px;
+            margin: 150px auto 20px auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+        }
+
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 5px auto;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #0074cc;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056a3;
+        }
+
+        .footer {
+            height: 120px;
+            background: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .footer p {
+            font-size: 16px;
+        }
+
+        .social-media a {
+            text-decoration: none;
+            color: white;
+            padding: 0; /* Remove padding */
+            margin: 0 2px; /* Add space between icons */
+
+        }
+
+#assist-toggle {
+    display: none;
+}
+
+#assist-button {
+    position: fixed;
+    top: 10px;
+    left: 6px;
+    background: #000;
+    color: #fff;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: opacity 0.3s;
+    z-index: 999;
+    -webkit-tap-highlight-color: transparent;
+}
+
+#assist-button p::before {
+    content: "\f0c9"; /* FontAwesome bars icon (default) */
+    font-family: 'Font Awesome 6 Free'; /* Font Awesome 6 class */
+    font-weight: 900;
+    font-size: 30px;
+}
+
+#assist-toggle:checked + #assist-button p::before {
+    content: "\f00d"; /* FontAwesome times icon (checked) */
+}
+
+#assist-toggle:checked + #assist-button + #assist-icons {
+    display: block;
+}
+
+#assist-icons {
+    display: none;
+    position: fixed;
+    top: 78px;
+    left: 12px;
+    z-index: 998;
+}
+
+#assist-icons a {
+    display: block;
+    background-color: #0077d9;
+    color: #fff;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    text-decoration: none;
+    transform: translateY(50px); /* Move the icons behind the button */
+    opacity: 0; /* Make them initially invisible */
+    transition: transform 0.3s, opacity 0.3s;
+    -webkit-tap-highlight-color: transparent;
+}
+
+@keyframes pop-up {
+    0% {
+        transform: translateY(-55px); /* Start behind the button */
+        opacity: 0; /* Initially invisible */
+    }
+    100% {
+        transform: translateY(0); /* Pop up to their original position */
+        opacity: 1; /* Fully visible */
+    }
+}
+
+#assist-icons a:nth-child(1) {
+    animation: pop-up 0.50s ease 0.20s forwards; /* Delay the animation for the first icon */
+}
+
+#assist-icons a:nth-child(2) {
+    animation: pop-up 0.45s ease 0.18s forwards; /* Delay the animation for the second icon */
+}
+
+#assist-icons a:nth-child(3) {
+    animation: pop-up 0.40s ease 0.16s forwards; /* Delay the animation for the second icon */
+}
+
+#assist-icons a:nth-child(4) {
+    animation: pop-up 0.35s ease 0.14s forwards; /* Delay the animation for the second icon */
+}
+
+#assist-icons a:nth-child(5) {
+    animation: pop-up 0.30s ease 0.12s forwards; /* Delay the animation for the second icon */
+}
+
+#assist-icons a:nth-child(6) {
+    animation: pop-up 0.25s ease 0.10s forwards; /* Delay the animation for the second icon */
+}
+
+#assist-icons a:nth-child(7) {
+    animation: pop-up 0.20s ease 0.08s forwards; /* Delay the animation for the second icon */
+}
+
+.tooltip::before {
+    content: attr(name);
+    display: block;
+    position: absolute;
+    background-color: #000;
+    color: #fff;
+    padding: 0 10px 0 10px;
+    border-radius: 10px;
+    min-width: 40px;
+    font-size: 10px;
+    text-align: center;
+    opacity: 0;
+    transform: translateX(50px);
+    transition: opacity 0s, transform 0.3s;
+    z-index: 1;
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+.tooltip:hover::before {
+    transform: translateX(50px);
+}
+
+.tooltip::after {
+  content: "";
+  position: absolute;
+  top: 30%;
+  left: 75%;
+  margin-left: 5px;
+  border-width: 8px;
+  border-style: solid;
+  visibility: hidden;
+  border-color: transparent #000 transparent transparent;
+}
+
+.tooltip:hover::before, .tooltip:hover::after {
+  opacity: 1;
+  visibility: visible;
+}
+
+#assist-icons a:hover {
+    background-color: #0056b3;
+}
+
+
+        main {
+          flex: 1;
+        }
+
+        .form-container a{
+          text-decoration: underline;
+          color:blue;
+          cursor: pointer;
+        }
+        .form-container a:hover {
+          color: #0056a3;
+        }
+
+        #custom-confirm-dialog {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            z-index: 11;
+            text-align: center;
+        }
+
+        .custom-confirm-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 5px 0px #ccc;
+            z-index: 13;
+        }
+
+        #custom-confirm-dialog p {
+            margin: 0;
+            font-size: 16px;
+        }
+
+        #custom-confirm-dialog button {
+            margin: 10px;
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+ .contact-form {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #fff;
+    padding: 20px 40px 20px 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    max-width: 200px;
+    border-radius: 10px;
+    text-align: left;
+    animation: slide-up 0.5s ease-out;
+}
+
+    @keyframes slide-up {
+        from {
+            transform: translateY(100%);
+        }
+        to {
+            transform: translateY(0);
+        }
+    }
+
+.contact-form h2 {
+    margin: 0;
+    color: #0074d9;
+}
+
+.form-group {
+    margin: 10px 0;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: none;
+}
+
+.form-group textarea {
+    height: 100px;
+}
+
+.form-group button {
+    background-color: #0074d9;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.form-group button[type="button"] {
+    background-color: #ccc;
+    margin-left: 10px;
+}
+
+#contact-button:hover {
+    opacity: 1;
+}
+
+#contact-form.active {
+    display: block;
+}
+
+
+    </style>
+</head>
+<body>
+    <div class="div-container">
+    <input type="checkbox" id="assist-toggle"> <!-- Hidden checkbox for assist toggle -->
+    <label for="assist-toggle" id="assist-button"> <!-- Assist button label -->
+        <p></p> <!-- Empty <i> tag for the FontAwesome icon -->
+    </label>
+    <div id="assist-icons">
+        <a href="/" class="tooltip" name="Home"><i class="fas fa-home"></i></a>
+        <a href="/tutorial" class="tooltip" name="Tutorial"><i class="fa-brands fa-leanpub"></i></a>
+        <a href="/login" class="tooltip" name="Login"><i class="fas fa-sign-in-alt"></i></a>
+        <a href="/bot"class="tooltip" name="Chatbot"><i class="fa-solid fa-robot"></i></a>
+        <a href="/details"class="tooltip" name="About"><i class="fa-solid fa-circle-info"></i></a>
+        <a id="contact-button" class="tooltip" name="contact"><i class="fas fa-envelope"></i></a>
+        <a id="logout-link" class="tooltip" name="Logout"><i class="fas fa-sign-out-alt"></i></a>
+    </div>
+    </div>
+    <div class="overlay"></div>
+    <div class="form-container" id="signup-form">
+        <h2>Sign Up</h2>
+        <input type="text" id="signup-username" placeholder="Username" required>
+        <input type="password" id="signup-password" placeholder="Password" required>
+        <button onclick="signup()">Sign Up</button>
+        <p>Already have an account? <a id="login" onclick="toggleForm('login')">Login</a></p>
+    </div>
+    <div class="form-container" id="login-form" style="display: none;">
+        <h2>Login</h2>
+        <input type="text" id="login-username" placeholder="Username" required>
+        <input type="password" id="login-password" placeholder="Password" required>
+        <button onclick="loginuser()">Login</button>
+        <p>Forgot your password? <a id="reset" onclick="toggleForm('reset')">Reset Password</a></p>
+        <p>Don't have an account? <a id="signup" onclick="toggleForm('signup')">Sign Up</a></p>
+    </div>
+    <div class="form-container" id="reset-form" style="display: none;">
+        <h2>Reset Password</h2>
+        <input type="text" id="reset-username" placeholder="Username" required>
+        <input type="text" id="reset-key" placeholder="Secret Key" required>
+        <input type="password" id="reset-new-password" placeholder="New Password" required>
+        <input type="password" id="reset-confirm-password" placeholder="Confirm Password" required>
+        <button onclick="viewSecretKeyFromResetForm()">View Secret Key</button>
+        <button onclick="resetPassword()">Reset Password</button>
+        <p>Remember your password? <a id="login" onclick="toggleForm('login')">Back to Login</a></p>
+    </div>
+    <p role="text" aria-label="Recipient's Message" id="message" style="color: red;"></p>
+    <div id="custom-confirm-dialog" class="overlay">
+    <div class="custom-confirm-content">
+        <p>Are you sure you want to logout?</p>
+        <button id="confirm-logout">Yes</button>
+        <button id="cancel-logout">No</button>
+    </div>
+    </div>
+        <div class="contact-form" id="contact-form">
+        <h2>Contact Us</h2>
+        <form id="myForm" action="/submit_form" method="post">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Message:</label>
+                <textarea role="textbox" aria-label="Sender's Message" id="messages" name="message" required></textarea>
+            </div>
+            <div class="form-group">
+                <button type="submit">Send</button>
+                <button type="button" id="close-button">Close</button>
+            </div>
+        </form>
+        <div id="messageDiv"></div>
+    </div>
+    <script>
+        function toggleForm(formType) {
+            var signupForm = document.getElementById('signup-form');
+            var loginForm = document.getElementById('login-form');
+            var resetForm = document.getElementById('reset-form');
+
+            if (formType === 'login') {
+                signupForm.style.display = 'none';
+                loginForm.style.display = 'block';
+                resetForm.style.display = 'none';
+                document.getElementById('login-username').value = '';
+                document.getElementById('login-password').value = '';
+                document.getElementById('message').innerText = '';
+            } else if (formType === 'reset') {
+                signupForm.style.display = 'none';
+                loginForm.style.display = 'none';
+                resetForm.style.display = 'block';
+                document.getElementById('signup-username').value = '';
+                document.getElementById('signup-password').value = '';
+                document.getElementById('message').innerText = '';
+            } else {
+                signupForm.style.display = 'block';
+                loginForm.style.display = 'none';
+                resetForm.style.display = 'none';
+                document.getElementById('reset-username').value = '';
+                document.getElementById('reset-key').value = '';
+                document.getElementById('reset-new-password').value = '';
+                document.getElementById('reset-confirm-password').value = '';
+                document.getElementById('message').innerText = '';
+            }
+        }
+
+        // Store the mapping of usernames to secret keys
+        var secretKeys = {};
+
+        function generateSecretKey() {
+            // Generate a random key (this is a simple example, in practice, use a better method)
+            return Math.random().toString(36).substring(2, 8);
+        }
+
+
+        function signup() {
+            var username = document.getElementById('signup-username').value;
+            var password = document.getElementById('signup-password').value;
+            var isLogin = localStorage.getItem('isLogin');
+
+            if (isLogin === 'true') {
+                document.getElementById('message').style.color = 'red';
+                document.getElementById('message').innerText = 'You are already logged in. No new signups allowed.';
+                return; // Exit the function
+            }
+
+            if (username === '' && password === '') {
+                document.getElementById('message').style.color = 'red';
+                document.getElementById('message').innerText = 'Please enter both username and password.';
+            } else if (username === '') {
+                document.getElementById('message').style.color = 'red';
+                document.getElementById('message').innerText = 'Please enter a username.';
+            } else if (password === '') {
+                document.getElementById('message').style.color = 'red';
+                document.getElementById('message').innerText = 'Please enter a password.';
+            } else if (
+                !/^[A-Z][a-z0-9@_]*$/.test(username) // Check if the username follows the format (first char uppercase, rest lowercase)
+            ) {
+                document.getElementById('message').style.color = 'red';
+                document.getElementById('message').innerText = "Start with an uppercase letter.\nYou can use lowercase letters, digits, '@', or '_'.\nAvoid using capital letters after the first character.";
+            } else {
+                // Check if the username already exists
+                var userExists = false;
+
+                // Perform an AJAX request to the server to check if the username exists
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', '/check_user?username=' + username, true);
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        var response = JSON.parse(xhr.responseText);
+                        userExists = response.exists;
+
+                        if (userExists) {
+                            document.getElementById('message').style.color = 'red';
+                            document.getElementById('message').innerText = 'Username already exists.';
+                        } else {
+                            // Generate a secret key
+                            var secretKey = generateSecretKey();
+
+                            // Create a data object to send to the server
+                            var data = {
+                                username: username,
+                                password: password,
+                                secretKey: secretKey
+                            };
+
+                            // Send a POST request to the server to create a user
+                            fetch('/create_user', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify(data)
+                            })
+                            .then(response => {
+                                if (response.ok) {
+                                    document.getElementById('message').style.color = 'green';
+                                    document.getElementById('message').innerText = 'Registration successful.\nYour secret key to reset the password: ' + secretKey;
+                                    document.getElementById('signup-username').value = '';
+                                    document.getElementById('signup-password').value = '';
+                                } else {
+                                    document.getElementById('message').style.color = 'red';
+                                    document.getElementById('message').innerText = 'User creation failed.';
+                                }
+                            })
+                            .catch(error => {
+                                document.getElementById('message').style.color = 'red';
+                                document.getElementById('message').innerText = 'An error occurred while creating the user.';
+                            });
+                        }
+                    }
+                };
+                xhr.send();
+            }
+        }
+
+
+        function loginuser() {
+            var username = document.getElementById('login-username').value;
+            var password = document.getElementById('login-password').value;
+            var isLogin = localStorage.getItem('isLogin');
+            if (isLogin === 'true') {
+                    document.getElementById('message').style.color = 'red';
+                    document.getElementById('message').innerText = 'You are already logged in. No new logins allowed.';
+                    return; // Exit the function
+            }
+            if (username === '' && password === '') {
+                document.getElementById('message').style.color = 'red';
+                document.getElementById('message').innerText = 'Please enter both username and password.';
+            } else if (username === '') {
+                document.getElementById('message').style.color = 'red';
+                document.getElementById('message').innerText = 'Please enter a username.';
+            } else if (password === '') {
+                document.getElementById('message').style.color = 'red';
+                document.getElementById('message').innerText = 'Please enter a password.';
+            } else {
+                // Send a request to the server to check login credentials
+                fetch('/loginuser', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        username: username,
+                        password: password
+                    })
+                })
+                .then(response => response.json())
+                .then(result => {
+                    if (result.message === 'Login successful') {
+                        document.getElementById('message').style.color = 'green';
+                        document.getElementById('message').innerText = 'Login successful.';
+                        localStorage.setItem('isLogin','true');
+                        var redirectMessage = document.createElement('p');
+                        redirectMessage.style.color = 'green';
+                        redirectMessage.innerHTML = 'Redirecting to the project page.<br>If not redirected, <a href="/bot" target="_blank" class="redirect">click here</a>.';
+                        document.getElementById('message').appendChild(redirectMessage);
+                        setTimeout(function () {
+                        window.location.href = '/bot';
+                    }, 2000);
+                    setTimeout(function () {
+                        document.getElementById('message').innerText = '';
+                    }, 6000);
+                    } else {
+                        document.getElementById('message').style.color = 'red';
+                        document.getElementById('message').innerText = 'Invalid login credentials.';
+                    }
+                })
+                .catch(error => {
+                    // Handle any errors that occur during the request.
+                });
+            }
+        }
+
+        function resetPassword() {
+            var username = document.getElementById('reset-username').value;
+            var secretKey = document.getElementById('reset-key').value;
+            var newPassword = document.getElementById('reset-new-password').value;
+            var confirmPassword = document.getElementById('reset-confirm-password').value;
+
+            var data = {
+                username: username,
+                secret_key: secretKey,
+                new_password: newPassword,
+                confirm_password: confirmPassword
+            };
+
+            // Send a POST request to the server
+            fetch('/reset_password', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(result => {
+                // Handle the response from the server
+                if (result.message === "Password reset successful") {
+                    // Password reset successful, handle accordingly (e.g., show a success message).
+                    document.getElementById('message').style.color = 'green';
+                    document.getElementById('message').innerText = result.message;
+                } else {
+                    // Password reset failed, handle accordingly (e.g., show an error message).
+                    document.getElementById('message').style.color = 'red';
+                    document.getElementById('message').innerText = result.message;
+                }
+            })
+            .catch(error => {
+                // Handle any errors that occur during the request.
+                document.getElementById('message').style.color = 'red';
+                document.getElementById('message').innerText = 'An error occurred while resetting the password.';
+            });
+        }
+
+        function viewSecretKeyFromResetForm() {
+            var username = document.getElementById('reset-username').value;
+
+            if (username === "") {
+                alert('Enter username to view Key.');
+                return;
+            }
+
+            if (username === "Admins") {
+                alert('Access to this account is denied.');
+                return;
+            }
+
+            // Send a request to the server to fetch the secret key
+            fetch('/get_secret_key?username=' + username, {
+                method: 'GET',
+            })
+            .then(response => response.json())
+            .then(result => {
+                if (result.secretKey) {
+                    alert('Your secret key: ' + result.secretKey);
+                } else {
+                    alert('Secret key not found for this user.');
+                }
+            })
+            .catch(error => {
+                alert('Error occurred while retrieving the secret key.');
+            });
+        }
+            document.getElementById("contact-button").addEventListener("click", function() {
+               var contactForm = document.getElementById("contact-form");
+               contactForm.classList.toggle("active");
+            });
+
+            document.getElementById("close-button").addEventListener("click", function() {
+               var contactForm = document.getElementById("contact-form");
+               contactForm.classList.remove("active");
+            });
+
+
+        if (document.referrer !== window.location.href && !getCookie('reloaded')) {
+            // Set a cookie to track the reload
+            document.cookie = 'reloaded=true;path=/';
+
+            // Force a page reload
+            location.reload();
+        }
+
+        function getCookie(name) {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+        }
+
+        document.getElementById('logout-link').addEventListener('click', function () {
+            var isLogged = localStorage.getItem('isLogin');
+
+            if (isLogged === 'true') {
+                // Show the custom confirm dialog
+                document.getElementById('custom-confirm-dialog').style.display = 'block';
+            } else {
+                alert("You are not logged in.");
+            }
+        });
+
+        function displayMessage(message) {
+            const form = document.getElementById("myForm");
+            const messageDiv = document.getElementById("messageDiv");
+
+            messageDiv.textContent = message;
+            messageDiv.style.color = "green";
+            messageDiv.style.fontSize = "10px";
+
+            form.reset();
+            setTimeout(function () {
+               messageDiv.textContent= "";
+            }, 2000);
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const form = document.getElementById("myForm");
+
+            form.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            const formData = new FormData(form);
+
+            fetch("/submit_form", {
+               method: "POST",
+               body: formData
+            })
+            .then(response => response.text())
+            .then(data => {
+               displayMessage(data);
+            })
+            .catch(error => {
+               displayMessage("Data submission failed.");
+            });
+          });
+        });
+
+        document.getElementById('confirm-logout').addEventListener('click', function () {
+            // Perform logout action and redirect to the index page
+            localStorage.setItem('isLogin', 'false');
+            window.location.href = '/logout';
+        });
+
+        document.getElementById('cancel-logout').addEventListener('click', function () {
+            document.getElementById('custom-confirm-dialog').style.display = 'none';
+        });
+
+    </script>
+</body>
+</html>
