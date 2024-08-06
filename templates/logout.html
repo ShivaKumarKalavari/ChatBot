@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en-IN" dir="ltr">
+<head>
+    <title>Logout</title>
+    <link rel="icon" href="https://cdn1.iconfinder.com/data/icons/heroicons-ui/24/logout-1024.png" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="description" content="Logout securely from VXBot. Safely end your session, protect your account, and ensure privacy. Sign out from your virtual assistant experience with confidence.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff;
+            color: #000;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 36px;
+            color: #333;
+        }
+
+        p {
+            font-size: 20px;
+            margin: 20px 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: #354ece;
+        }
+
+        a:hover {
+            color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 80vh;">
+        <h1>You have been successfully logged out.</h1>
+        <p>Redirecting to <a href="/">Home</a> in <span id="countdown">5</span> seconds...</p>
+        <script>
+            var seconds = 5;
+            function countdown() {
+                document.getElementById('countdown').innerHTML = seconds;
+                if (seconds === 0) {
+                    window.location = '/';
+                } else {
+                    seconds--;
+                    setTimeout(countdown, 1000);
+                }
+            }
+            countdown();
+        </script>
+    </div>
+</body>
+</html>
