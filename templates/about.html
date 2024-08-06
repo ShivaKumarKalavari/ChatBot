@@ -1,0 +1,1298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <meta http-equiv="Cache-control" content="public">
+    <meta http-equiv="Expires" content="max-age=31536000, must-revalidate">
+    <meta http-equiv="Content-Encoding" content="gzip">
+    <link rel="icon" type="image/png" href="https://sites.ipagepro.com/minsky-cottone-cpas-pc/wp-content/uploads/sites/231/2022/12/google.png">
+    <meta name="description" content="Learn about VXBot - where innovation meets dedication. Explore our journey, achievements, and the motivation behind VXBot. Join us in the quest for innovation and discover the exciting world of virtual assistance with VXBot.">
+
+    <style>
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #ACC8E5;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 20px auto 20px auto;
+    background-color: lightyellow;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+    .container {
+        margin: 20px 10px 20px 10px;
+    }
+}
+
+.header, h1{
+    text-align: center;
+    color: white;
+}
+
+.profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin: 20px auto;
+    display: block;
+    object-fit: cover;
+    border: 4px solid;
+    border-top-color: #000;
+    border-bottom-color: #000;
+    border-left-color: maroon;
+    border-right-color: maroon;
+}
+
+.name {
+    font-size: 32px;
+    font-weight: bold;
+    color: #333;
+}
+
+.basic-details {
+    font-size: 18px;
+    margin-top: 10px;
+    color: #555;
+}
+
+h2 {
+    font-size: 28px;
+    margin-top: 20px;
+    border-bottom: 2px solid #333;
+    padding-bottom: 10px;
+    color: brown;
+}
+
+p, .achievement-item p, .certification-item p, .project-item p {
+    font-size: 18px;
+    margin: 15px 0;
+    color: #333;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+.achievement-item, .certification-item, .project-item {
+    margin: 20px 0;
+}
+
+.project-item h3 {
+    font-size: 22px;
+    color: #555;
+}
+
+.div-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background: #000;
+}
+
+#assist-toggle {
+    display: none;
+}
+
+#assist-button {
+    position: fixed;
+    top: 16px;
+    left: 6px;
+    background: #000;
+    color: #fff;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: opacity 0.3s;
+    z-index: 999;
+    -webkit-tap-highlight-color: transparent;
+}
+
+#assist-button p::before {
+    content: "\f0c9"; /* FontAwesome bars icon (default) */
+    font-family: 'Font Awesome 6 Free'; /* Font Awesome 6 class */
+    font-weight: 900;
+    font-size: 30px;
+}
+
+#assist-toggle:checked + #assist-button p::before {
+    content: "\f00d"; /* FontAwesome times icon (checked) */
+}
+
+#assist-toggle:checked + #assist-button + #assist-icons {
+    display: block;
+}
+
+#assist-icons {
+    display: none;
+    position: fixed;
+    top: 86px;
+    left: 12px;
+    z-index: 998;
+}
+
+#assist-icons a {
+    display: block;
+    background-color: #0077d9;
+    color: #fff;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    text-decoration: none;
+    transform: translateY(50px); /* Move the icons behind the button */
+    opacity: 0; /* Make them initially invisible */
+    transition: transform 0.3s, opacity 0.3s;
+    -webkit-tap-highlight-color: transparent;
+}
+
+@keyframes pop-up {
+    0% {
+        transform: translateY(-55px); /* Start behind the button */
+        opacity: 0; /* Initially invisible */
+    }
+    100% {
+        transform: translateY(0); /* Pop up to their original position */
+        opacity: 1; /* Fully visible */
+    }
+}
+
+#assist-icons a:nth-child(1) {
+    animation: pop-up 0.50s ease 0.20s forwards; /* Delay the animation for the first icon */
+}
+
+#assist-icons a:nth-child(2) {
+    animation: pop-up 0.45s ease 0.18s forwards; /* Delay the animation for the second icon */
+}
+
+#assist-icons a:nth-child(3) {
+    animation: pop-up 0.40s ease 0.16s forwards; /* Delay the animation for the second icon */
+}
+
+#assist-icons a:nth-child(4) {
+    animation: pop-up 0.35s ease 0.14s forwards; /* Delay the animation for the second icon */
+}
+
+#assist-icons a:nth-child(5) {
+    animation: pop-up 0.30s ease 0.12s forwards; /* Delay the animation for the second icon */
+}
+
+#assist-icons a:nth-child(6) {
+    animation: pop-up 0.25s ease 0.10s forwards; /* Delay the animation for the second icon */
+}
+
+#assist-icons a:nth-child(7) {
+    animation: pop-up 0.20s ease 0.08s forwards; /* Delay the animation for the second icon */
+}
+
+.tooltip::before {
+    content: attr(name);
+    display: block;
+    position: absolute;
+    background-color: #000;
+    color: #fff;
+    padding: 0 10px 0 10px;
+    border-radius: 10px;
+    min-width: 40px;
+    font-size: 10px;
+    text-align: center;
+    opacity: 0;
+    transform: translateX(50px);
+    transition: opacity 0s, transform 0.3s;
+    z-index: 1;
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+.tooltip:hover::before {
+    transform: translateX(50px);
+}
+
+.tooltip::after {
+  content: "";
+  position: absolute;
+  top: 30%;
+  left: 75%;
+  margin-left: 5px;
+  border-width: 8px;
+  border-style: solid;
+  visibility: hidden;
+  border-color: transparent #000 transparent transparent;
+}
+
+.tooltip:hover::before, .tooltip:hover::after {
+  opacity: 1;
+  visibility: visible;
+}
+
+#assist-icons a:hover {
+    background-color: #0056b3;
+}
+
+.faq {
+    margin-top: 40px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    color: black;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.faq h2 {
+    font-size: 24px;
+    color: #333;
+}
+
+.faq-list {
+    list-style: none;
+    padding: 0;
+    z-index: 2;
+}
+
+.faq-item {
+    color: black;
+    cursor: pointer;
+    margin: 15px 0;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.faq-question::before {
+    content: '➕';
+    margin-right: 10px;
+    font-weight: bold;
+    color: #333;
+}
+
+.faq-answer {
+    display: none;
+    font-size: 16px;
+    color: #555;
+}
+
+.faq-item.active .faq-answer {
+    display: block;
+}
+
+.faq-item.active .faq-question::before {
+    content: '➖';
+}
+
+#content-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+#lc-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+#todo-list {
+    flex: 1;
+    min-width: 300px;
+    max-width: 750px;
+    margin: 20px 10px;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    height: 450px;
+}
+#learning-container, #clock-widget {
+    flex: 1;
+    max-width: 700px;
+    margin: 20px 10px;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.task.completed {
+    background-color: #8aff8a;
+}
+
+#todo-list h2, #learning-container h2, #clock-widget h2 {
+    color: #000;
+    border: none;
+}
+
+.task {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    margin-bottom: 12px;
+    background-color: #fff;
+}
+
+.task input[type="checkbox"] {
+    margin-right: 12px;
+    color: green;
+}
+
+.delete-btn {
+    cursor: pointer;
+    color: #ff4d4d;
+    font-weight: bold;
+}
+
+#task-input {
+    flex: 1;
+    max-width: 80%;
+    padding: 8px;
+    margin-right: 8px;
+}
+
+#add-btn {
+    padding: 10px 12px;
+    background-color: #306100;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#add-task-container {
+    display: flex;
+    position: absolute; 
+    width: 100%; 
+    bottom: 20px;
+    left: 20px;
+}
+#tasks-container {
+    max-height: 300px;
+    overflow-y: auto;
+    margin-bottom: 12px;
+    user-select: none;
+}
+
+#learning-container {
+    height: 250px;
+}
+
+#empty-note {
+    text-align: center;
+    text-decoration: bold;
+    margin: 100px auto;
+}
+
+.word-guess-game {
+    padding: 20px;
+    border: 2px solid #3498db;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    background-color: #ecf0f1;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.word-guess-game:hover {
+    background-color: #2980b9;
+}
+
+#guess-input-container {
+    display: none;
+    text-align: center;
+}
+
+#word-display {
+    font-size: 24px;
+    margin-bottom: 12px;
+    color: #3498db;
+}
+
+#guess-input {
+    width: 70%;
+    padding: 8px;
+    margin-bottom: 8px;
+    border: 2px solid #3498db;
+    border-radius: 4px;
+    outline: none;
+}
+
+#submit-guess-btn, #enter-game-btn{
+    padding: 10px 20px;
+    margin-top: 10px;
+    background-color: #006061;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+#exit-game-btn {
+    padding: 10px 20px;
+    margin-top: 10px;
+    background-color: red;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+#submit-guess-btn:hover,
+#exit-game-btn:hover,
+#enter-game-btn:hover {
+    background-color: #2980b9;
+}
+
+#feedback-container {
+    margin-top: 20px;
+    font-size: 16px;
+}
+
+.congrats-animation {
+    color: #27ae60;
+    font-weight: bold;
+    font-size: 18px;
+    animation: congratsAnimation 1s ease-in-out;
+}
+
+.wrong-animation {
+    color: #e74c3c;
+    font-weight: bold;
+    font-size: 18px;
+    animation: wrongAnimation 1s ease-in-out;
+}
+
+@keyframes congratsAnimation {
+    0% { transform: scale(1); opacity: 0; }
+    50% { transform: scale(1.1); opacity: 1; }
+    100% { transform: scale(1); opacity: 0; }
+}
+
+@keyframes wrongAnimation {
+    0%, 100% { transform: translateX(0); }
+    25%, 75% { transform: translateX(-10px); }
+    50% { transform: translateX(10px); }
+}
+
+#clock-widget {
+    height: 150px;
+}
+#clock {
+    font-size: 2em;
+    font-family: "Courier New", Courier, monospace;
+    background-color: #000;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    width: 190px;
+}
+
+#clock span {
+    padding: 5px;
+    display: inline-block;
+    background: rgba(255,255,255,0.2);
+    border: 2px solid #fff;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+
+.footer {
+    background: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+.footer p {
+    color: #fff;
+    font-size: 18px;
+}
+
+.social-media a {
+    text-decoration: none;
+    color: white;
+    padding: 0;
+    margin: 0 2px;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.social-media a:hover {
+    color: #0074cc;
+}
+
+#custom-confirm-dialog {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    z-index: 11;
+    text-align: center;
+}
+
+.custom-confirm-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px 0px #ccc;
+    z-index: 13;
+}
+
+#custom-confirm-dialog p {
+    margin: 0;
+    font-size: 16px;
+}
+
+#custom-confirm-dialog button {
+    margin: 10px;
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+@media screen and (min-width: 775px) {
+    .social-media a {
+        margin: 0 5px;
+    }
+}
+
+.nav-container {
+    background: #ffffff;
+    text-decoration: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    width: auto;
+    -webkit-tap-highlight-color: transparent;
+    margin: 10px;
+    padding: 20px;
+    border-radius: 10px;
+    justify-content: space-around;
+}
+
+.a, .b, .c {
+    text-decoration: none;
+    color: white;
+    padding-right: 10px;
+}
+
+.d {
+    text-decoration: none;
+    color: white;
+}
+
+.nav-container button {
+    background: #102444;
+    color: #fff;
+    text-decoration: bold;
+    border-radius: 10px;
+    padding: 8px 5px;
+    border-color: #fff;
+}
+
+.nav-container button:hover {
+    background: #120444;
+}
+
+.contact-form {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #fff;
+    padding: 20px 40px 20px 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    max-width: 200px;
+    border-radius: 10px;
+    animation: slide-up 0.5s ease-out;
+}
+
+    @keyframes slide-up {
+        from {
+            transform: translateY(100%);
+        }
+        to {
+            transform: translateY(0);
+        }
+    }
+
+.contact-form h2 {
+    margin: 0;
+    color: #0074d9;
+}
+
+.form-group {
+    margin: 10px 0;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: none;
+}
+
+.form-group textarea {
+    height: 100px;
+}
+
+.form-group button {
+    background-color: #0074d9;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.form-group button[type="button"] {
+    background-color: #ccc;
+    margin-left: 10px;
+}
+
+#contact-button:hover {
+    opacity: 1;
+}
+
+#contact-form.active {
+    display: block;
+}
+.none {
+    font-size: 5px;
+    color: #354b6f;
+    user-select: none;
+}
+    </style>
+</head>
+<body>
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+    <div class="div-container">
+        <div class="new-menu">
+            <input type="checkbox" id="assist-toggle">
+            <label for="assist-toggle" id="assist-button">
+                <p style="color: #fff;"></p>
+            </label>
+            <div id="assist-icons">
+               <a href="/" class="tooltip" name="Home"><i class="fas fa-home"></i></a>
+               <a href="/tutorial" class="tooltip" name="Tutorial"><i class="fa-brands fa-leanpub"></i></a>
+               <a href="/login" class="tooltip" name="Login"><i class="fas fa-sign-in-alt"></i></a>
+               <a href="/bot"class="tooltip" name="Chatbot"><i class="fa-solid fa-robot"></i></a>
+               <a href="/details"class="tooltip" name="About"><i class="fa-solid fa-circle-info"></i></a>
+               <a id="contact-button" class="tooltip" name="contact"><i class="fas fa-envelope"></i></a>
+               <a id="logout-link"class="tooltip" name="Logout"><i class="fas fa-sign-out-alt"></i></a>
+        </div>
+        </div>
+        <header>
+            <h1>About</h1>
+        </header>
+        <div>
+        <p class="none" >__</p>
+        </div>
+    </div>
+    <div class="contact-form" id="contact-form">
+        <h2>Contact Us</h2>
+        <form id="myForm" action="/submit_form" method="post">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" required></textarea>
+            </div>
+            <div class="form-group">
+                <button type="submit">Send</button>
+                <button type="button" id="close-button">Close</button>
+            </div>
+        </form>
+        <div id="messageDiv"></div>
+    </div>
+<div class="nav-container">
+    <a class="a" id="D-1" onclick="showProfile('developer-1')"><button>Gulam Dastageer</button></a>
+    <a class="b" id="D-2" onclick="showProfile('developer-2')"><button>Aleti Hrushikesh</button></a>
+    <a class="c" id="D-3" onclick="showProfile('developer-3')"><button>Balasani Gayathri</button></a>
+    <a class="d" id="D-4" onclick="showProfile('developer-4')"><button>K. Shiva Kumar</button></a>
+</div>
+    <div class="container" id="developer-1">
+        <div class="header">
+                        <img style="width: 150px; height: 150px; border-radius: 50%; margin: 20px auto; display: block; object-fit: cover; border: 4px solid; border-top-color: #000; border-bottom-color: #000; border-left-color: maroon; border-right-color: maroon;" src="https://res.cloudinary.com/duvkd4zpx/image/upload/vu1flamxhx7sidltdeym" alt="Profile Image" loading="eager">
+            <div class="name">Gulam Dastageer</div>
+            <div class="basic-details">Web Developer <br>Email: gulamdastageer@gmail.com <br>LinkedIn: <a href="https://github.com/404" style="color: #0055b3;">Visit Profile</a></div>
+        </div>
+        <h2>Skills</h2>
+        <ul>
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JavaScript</li>
+            <li>C programming</li>
+            <li>Python basics</li>
+            <li>Java basics</li>
+        </ul>
+        <h2>Education</h2>
+        <p>B.Tech in Information Technology, MLR Institution of Technology, 2025</p>
+        <h2>Achievements</h2>
+        <div class="achievement-item">
+            <p>Awarded 5 stars in Hackerrank</p>
+        </div>
+        <h2>Certifications</h2>
+        <div class="certification-item">
+            <p>Certified in DSA using java from NPTEL, 2023</p>
+            <p>Certified in HTML, CSS from Udemy, 2023</p>
+        </div>
+        <h2>Projects</h2>
+        <div class="project-item">
+            <h3>Traffic Light system using IOT</h3>
+            <p>The "IoT-Based Traffic Management System with IR Sensors" is an innovative project that utilizes Internet of Things (IoT) technology and Arduino-based hardware with Infrared (IR) sensors to revolutionize traffic management. This system addresses the challenges of traffic congestion, safety, and efficiency by integrating IR sensors for precise and reliable traffic detection.</p>
+        </div>
+        <div class="project-item">
+            <h3>Chatbot</h3>
+            <p>The "Student Subject Query Chatbot" is an interactive web-based chatbot created using HTML, CSS, and JavaScript, with a Python backend. It is designed to assist students with their queries related to various subjects. This chatbot provides students with a user-friendly platform to ask questions, seek clarification, and receive prompt and accurate responses about their academic subjects.</p>
+        </div>
+        <h2>Coding Profiles</h2>
+        <div class="certification-item">
+          <p>Hackerrank</p>
+          <p>Codechef</p>
+        </div>
+    </div>
+        <div class="container" id="developer-2">
+        <div class="header">
+            <img class="profile-image" src="https://res.cloudinary.com/duvkd4zpx/image/upload/cfvowvtpluslxijhzstf" alt="Profile Image">
+            <div class="name">Aleti Hrushikesh</div>
+            <div class="basic-details">UI/UX Designer <br>Email: hrushikesh@gmail.com <br>LinkedIn: <a href="https://github.com/404" style="color: #0055b3;">Visit Profile</a></div>
+        </div>
+        <h2>Skills</h2>
+        <ul>
+            <li>UI/UX</li>
+            <li>Figma, Illustrator</li>
+            <li>C programming</li>
+            <li>Python basics</li>
+            <li>Java basics</li>
+        </ul>
+        <h2>Education</h2>
+        <p>B.Tech in Information Technology, MLR Institution of Technology, 2025</p>
+        <h2>Achievements</h2>
+        <div class="achievement-item">
+            <p>Awarded best Designer,2023</p>
+        </div>
+        <h2>Certifications</h2>
+        <div class="certification-item">
+            <p>Certified in UI/UX designing, 2023</p>
+            <p>Certified in microsoft PowerBI, 2023</p>
+        </div>
+        <h2>Projects</h2>
+        <div class="project-item">
+            <h3>Traffic Light system using IOT</h3>
+            <p>The "IoT-Based Traffic Management System with IR Sensors" is an innovative project that utilizes Internet of Things (IoT) technology and Arduino-based hardware with Infrared (IR) sensors to revolutionize traffic management. This system addresses the challenges of traffic congestion, safety, and efficiency by integrating IR sensors for precise and reliable traffic detection.</p>
+        </div>
+        <div class="project-item">
+            <h3>Chatbot</h3>
+            <p>The "Student Subject Query Chatbot" is an interactive web-based chatbot created using HTML, CSS, and JavaScript, with a Python backend. It is designed to assist students with their queries related to various subjects. This chatbot provides students with a user-friendly platform to ask questions, seek clarification, and receive prompt and accurate responses about their academic subjects.</p>
+        </div>
+        <h2>Coding Profiles</h2>
+        <div class="certification-item">
+          <p>Hackerrank</p>
+          <p>Codechef</p>
+        </div>
+    </div>
+        <div class="container" id="developer-3">
+        <div class="header">
+            <img class="profile-image" src="https://res.cloudinary.com/duvkd4zpx/image/upload/sj5ezlvbo8qjx1qcv3ay" alt="Profile Image">
+            <div class="name">Balasani Gayathri</div>
+            <div class="basic-details">Data specialist <br>Email: balasanigayathri@gmail.com <br>LinkedIn: <a href="https://github.com/404" style="color: #0055b3;">Visit Profile</a></div>
+        </div>
+        <h2>Skills</h2>
+        <ul>
+            <li>.Net basics</li>
+            <li>C programming</li>
+            <li>Python basics</li>
+            <li>Java basics</li>
+        </ul>
+        <h2>Education</h2>
+        <p>B.Tech in Information Technology, MLR Institution of Technology, 2025</p>
+        <h2>Achievements</h2>
+        <div class="achievement-item">
+            <p>Awarded silver badge in Codechef</p>
+        </div>
+        <h2>Certifications</h2>
+        <div class="certification-item">
+            <p>Certified in Data management, 2023</p>
+            <p>Certified in Networking, 2023</p>
+        </div>
+        <h2>Projects</h2>
+        <div class="project-item">
+            <h3>Traffic Light system using IOT</h3>
+            <p>The "IoT-Based Traffic Management System with IR Sensors" is an innovative project that utilizes Internet of Things (IoT) technology and Arduino-based hardware with Infrared (IR) sensors to revolutionize traffic management. This system addresses the challenges of traffic congestion, safety, and efficiency by integrating IR sensors for precise and reliable traffic detection.</p>
+        </div>
+        <div class="project-item">
+            <h3>Chatbot</h3>
+            <p>The "Student Subject Query Chatbot" is an interactive web-based chatbot created using HTML, CSS, and JavaScript, with a Python backend. It is designed to assist students with their queries related to various subjects. This chatbot provides students with a user-friendly platform to ask questions, seek clarification, and receive prompt and accurate responses about their academic subjects.</p>
+        </div>
+        <h2>Coding Profiles</h2>
+        <div class="certification-item">
+          <p>Hackerrank</p>
+          <p>Codechef</p>
+        </div>
+    </div>
+        <div class="container" id="developer-4">
+        <div class="header">
+            <img class="profile-image" src="https://res.cloudinary.com/duvkd4zpx/image/upload/xripr4oswqru95ribqt2" alt="Profile Image">
+            <div class="name">Kalavari Shiva Kumar</div>
+            <div class="basic-details">Backend Developer <br>Email: shivakumar@gmail.com <br>LinkedIn: <a href="https://github.com/404" style="color: #0055b3;">Visit Profile</a></div>
+        </div>
+        <h2>Skills</h2>
+        <ul>
+            <li>C programming</li>
+            <li>Python basics</li>
+            <li>Java basics</li>
+            <li>Data Structure and Algorithms in Java</li>
+        </ul>
+        <h2>Education</h2>
+        <p>B.Tech in Information Technology, MLR Institution of Technology, 2025</p>
+        <h2>Achievements</h2>
+        <div class="achievement-item">
+            <p>Awarded silver badge in Codechef</p>
+        </div>
+        <h2>Certifications</h2>
+        <div class="certification-item">
+            <p>Certified in DSA in Java from NPTEL, 2023</p>
+            <p>Certified in Python from udemy, 2023</p>
+        </div>
+        <h2>Projects</h2>
+        <div class="project-item">
+            <h3>Traffic Light system using IOT</h3>
+            <p>The "IoT-Based Traffic Management System with IR Sensors" is an innovative project that utilizes Internet of Things (IoT) technology and Arduino-based hardware with Infrared (IR) sensors to revolutionize traffic management. This system addresses the challenges of traffic congestion, safety, and efficiency by integrating IR sensors for precise and reliable traffic detection.</p>
+        </div>
+        <div class="project-item">
+            <h3>Chatbot</h3>
+            <p>The "Student Subject Query Chatbot" is an interactive web-based chatbot created using HTML, CSS, and JavaScript, with a Python backend. It is designed to assist students with their queries related to various subjects. This chatbot provides students with a user-friendly platform to ask questions, seek clarification, and receive prompt and accurate responses about their academic subjects.</p>
+        </div>
+        <h2>Coding Profiles</h2>
+        <div class="certification-item">
+          <p>Hackerrank</p>
+          <p>Codechef</p>
+        </div>
+    </div>
+    <div id="custom-confirm-dialog" class="overlay">
+        <div class="custom-confirm-content">
+            <p>Are you sure you want to logout?</p>
+            <button id="confirm-logout">Yes</button>
+            <button id="cancel-logout">No</button>
+        </div>
+    </div>
+    <div class="faq">
+        <h3>Frequently Asked Questions</h3>
+        <ul class="faq-list">
+            <li class="faq-item">
+                <span class="faq-question">What is this website about?</span>
+                <div class="faq-answer">This website provides information about our development team.</div>
+            </li>
+            <li class="faq-item">
+                <span class="faq-question">How can I contact the developers?</span>
+                <div class="faq-answer">You can contact the developers through the provided social media links.</div>
+            </li>
+        </ul>
+    </div>
+    <div id="content-container">
+    <div id="todo-list">
+        <h2>To-Do List</h2>
+        <div id="tasks-container"></div>
+        <div id="empty-note">Your tasks will appear here.</div>
+        <div id="add-task-container">
+            <input type="text" id="task-input" placeholder="Add a new task">
+            <button id="add-btn" onclick="addTask()">Add Task</button>
+        </div>
+    </div>
+    <div id="lc-container">
+    <div id="learning-container">
+        <h2>Word Guess Game</h2>
+        <div id="word-guess-game" onclick="startWordGuessGame()">
+            <button id="enter-game-btn">Start Game!</button>
+        </div>
+        <div id="guess-input-container">
+            <div id="word-display"></div>
+            <input type="text" id="guess-input" placeholder="Enter your guess"><br>
+            <button id="submit-guess-btn" onclick="submitGuess()">Submit Guess</button>
+            <button id="exit-game-btn" onclick="exitGame()">Exit Game</button>
+            <div id="feedback-container"></div>
+        </div>
+    </div>
+    <div id="clock-widget">
+    <h2>Clock Widget</h2>
+    <div id="clock">
+      <div class="ho">
+        <span id="hours">12</span>
+      </div>
+      <div class="min">
+        <span id="minutes">00</span>
+      </div>
+      <div class="sec">
+        <span id="seconds">00</span>
+      </div>
+    </div>
+</div>
+</div>
+</div>
+    <div class="footer">
+        <p>Connect with us on social media:</p>
+        <div class="social-media">
+            <a href="https://github.com/404" aria-label="Facebook"><i class="fab fa-facebook fa-2x"></i></a>
+            <a href="https://github.com/404" aria-label="Twitter"><i class="fab fa-twitter fa-2x"></i></a>
+            <a href="https://github.com/404" aria-label="Instagram"><i class="fab fa-instagram fa-2x"></i></a>
+            <a href="https://github.com/404" aria-label="Discord"><i class="fab fa-discord fa-2x"></i></a>
+            <a href="https://github.com/404" aria-label="Snapchat"><i class="fab fa-snapchat fa-2x"></i></a>
+        </div>
+        <p>MLRIT MINIPROJECT 2023</p>
+    </div>
+    <script>
+function displayMessage(message) {
+    const form = document.getElementById("myForm");
+    const messageDiv = document.getElementById("messageDiv");
+
+    messageDiv.textContent = message;
+    messageDiv.style.color = "green";
+    messageDiv.style.fontSize = "10px";
+
+    form.reset();
+    setTimeout(function () {
+        messageDiv.textContent = "";
+    }, 2000);
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("myForm");
+
+    form.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const formData = new FormData(form);
+
+        fetch("/submit_form", {
+            method: "POST",
+            body: formData,
+        })
+            .then(response => response.text())
+            .then(data => {
+                displayMessage(data);
+            })
+            .catch(error => {
+                displayMessage("Data submission failed.");
+            });
+    });
+});
+
+document.getElementById("contact-button").addEventListener("click", function () {
+    var contactForm = document.getElementById("contact-form");
+    contactForm.classList.toggle("active");
+});
+
+document.getElementById("close-button").addEventListener("click", function () {
+    var contactForm = document.getElementById("contact-form");
+    contactForm.classList.remove("active");
+});
+
+window.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowDown') {
+        window.scrollBy(0, 100);
+    }
+    if (e.key === 'ArrowUp') {
+        window.scrollBy(0, -100);
+    }
+});
+
+function showProfile(profileId) {
+    // Hide all developer profiles
+    const profiles = document.querySelectorAll('.container');
+    profiles.forEach(profile => {
+        profile.style.display = 'none';
+    });
+
+    // Show the selected developer profile
+    const selectedProfile = document.getElementById(profileId);
+    selectedProfile.style.display = 'block';
+}
+
+window.addEventListener('load', function () {
+    showProfile('developer-1');
+});
+
+// Event listener to the "Logout" menu item
+document.getElementById('logout-link').addEventListener('click', function () {
+    var isLogged = localStorage.getItem('isLogin');
+
+    if (isLogged === 'true') {
+        // Show the custom confirm dialog
+        document.getElementById('custom-confirm-dialog').style.display = 'block';
+    } else {
+        alert("You are not logged in.");
+    }
+});
+
+document.getElementById('confirm-logout').addEventListener('click', function () {
+    // Perform logout action and redirect to the index page
+    localStorage.setItem('isLogin', 'false');
+    localStorage.setItem('username', '');
+    window.location.href = '/';
+});
+
+document.getElementById('cancel-logout').addEventListener('click', function () {
+    // Hide the custom confirm dialog
+    document.getElementById('custom-confirm-dialog').style.display = 'none';
+});
+
+const faqItems = document.querySelectorAll('.faq-item');
+faqItems.forEach(item => {
+    item.addEventListener('click', () => {
+        item.classList.toggle('active');
+    });
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+    loadTasks();
+    const taskInput = document.getElementById("task-input");
+    taskInput.addEventListener("keydown", function(event) {
+        if (event.keyCode === 13) {
+            addTask();
+        }
+    });
+});
+
+function loadTasks() {
+        const tasksContainer = document.getElementById("tasks-container");
+        const emptyNote = document.getElementById("empty-note");
+        tasksContainer.innerHTML = ""; // Clear existing tasks
+
+        const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+
+        tasks.forEach(function (task, index) {
+            const taskElement = createTaskElement(task, index, tasks);
+            tasksContainer.appendChild(taskElement);
+        });
+
+        // Toggle the visibility of the empty note based on whether tasks exist or not
+        emptyNote.style.display = tasks.length ? "none" : "block";
+    }
+
+function saveTasks(tasks) {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+}
+
+function createTaskElement(task, index, tasks) {
+    const taskElement = document.createElement("div");
+    taskElement.classList.add("task");
+
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.checked = task.done;
+    checkbox.addEventListener("change", function() {
+        tasks[index].done = checkbox.checked;
+        saveTasks(tasks);
+    // Toggle the 'completed' class based on the checkbox state
+        if (checkbox.checked) {
+            taskElement.classList.add("completed");
+        } else {
+            taskElement.classList.remove("completed");
+        }
+    });
+
+    const taskText = document.createElement("span");
+    taskText.innerText = task.text;
+
+    const deleteBtn = document.createElement("span");
+    deleteBtn.classList.add("delete-btn");
+    deleteBtn.innerHTML = "&#x2716;";
+    deleteBtn.addEventListener("click", function() {
+        tasks.splice(index, 1);
+        saveTasks(tasks);
+        loadTasks();
+    });
+
+    taskElement.appendChild(checkbox);
+    taskElement.appendChild(taskText);
+    taskElement.appendChild(deleteBtn);
+
+    // Add the 'completed' class if the task is already completed
+    if (checkbox.checked) {
+        taskElement.classList.add("completed");
+    }
+
+    return taskElement;
+}
+
+
+function addTask() {
+        const taskInput = document.getElementById("task-input");
+        const taskText = taskInput.value.trim();
+
+        if (taskText !== "") {
+            const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+            tasks.push({ text: taskText, done: false });
+            saveTasks(tasks);
+
+            taskInput.value = ""; // Clear input field
+            loadTasks(); // Reload tasks
+
+            // Toggle the visibility of the empty note based on whether tasks exist or not
+            const emptyNote = document.getElementById("empty-note");
+            emptyNote.style.display = tasks.length ? "none" : "block";
+        }
+    }
+        const wordsToGuess = ["apple", "banana", "orange", "grape", "melon", "strawberry", "pineapple", "kiwi", "blueberry"];
+        let currentWord;
+        let gameActive = false;
+
+        function startWordGuessGame() {
+            const wordGuessGame = document.getElementById("word-guess-game");
+            const guessInputContainer = document.getElementById("guess-input-container");
+            const wordDisplay = document.getElementById("word-display");
+            const guessInput = document.getElementById("guess-input");
+            const feedbackContainer = document.getElementById("feedback-container");
+
+            // Reset game state
+            currentWord = getRandomWord();
+            let shuffledWord = shuffleWord(currentWord);
+
+            // Ensure the shuffled word is not the same as the original word
+            while (shuffledWord === currentWord) {
+                shuffledWord = shuffleWord(currentWord);
+            }
+
+            wordDisplay.innerText = shuffledWord;
+            guessInput.value = "";
+            feedbackContainer.innerText = "";
+
+            // Show guess input container
+            wordGuessGame.style.display = "none";
+            guessInputContainer.style.display = "block";
+            gameActive = true;
+        }
+
+        function getRandomWord() {
+            const randomIndex = Math.floor(Math.random() * wordsToGuess.length);
+            return wordsToGuess[randomIndex];
+        }
+
+        function shuffleWord(word) {
+            const shuffledWordArray = word.split('').sort(() => Math.random() - 0.5);
+            return shuffledWordArray.join('');
+        }
+
+        function submitGuess() {
+            if (!gameActive) return;
+
+            const guessInput = document.getElementById("guess-input");
+            const feedbackContainer = document.getElementById("feedback-container");
+            const wordDisplay = document.getElementById("word-display");
+
+            const userGuess = guessInput.value.trim().toLowerCase();
+
+            if (userGuess === currentWord) {
+                feedbackContainer.innerHTML = "<div class='congrats-animation'>Congratulations! Your guess is correct.</div>";
+                setTimeout(() => {
+                    feedbackContainer.innerHTML = ""; // Remove congratulations message
+                    currentWord = getRandomWord(); // Change the word after a successful guess
+                    let shuffledWord = shuffleWord(currentWord);
+
+                    // Ensure the shuffled word is not the same as the original word
+                    while (shuffledWord === currentWord) {
+                        shuffledWord = shuffleWord(currentWord);
+                    }
+
+                    wordDisplay.innerText = shuffledWord; // Display the new jumbled word
+                    guessInput.value = ""; // Clear the input field
+                }, 2000);
+            } else {
+                feedbackContainer.innerHTML = "<div class='wrong-animation'>Oops! Try again.</div>";
+                vibrateDevice(); // Vibrate on incorrect guess
+            }
+        }
+
+        function vibrateDevice() {
+            if (navigator.vibrate) {
+                // Vibrate for 200ms
+                navigator.vibrate(200);
+            }
+        }
+
+        function exitGame() {
+            const wordGuessGame = document.getElementById("word-guess-game");
+            const guessInputContainer = document.getElementById("guess-input-container");
+
+            // Reset game state
+            gameActive = false;
+            currentWord = null;
+
+            // Hide input container and show start game message
+            guessInputContainer.style.display = "none";
+            wordGuessGame.style.display = "block";
+        }
+
+function updateClock() {
+        const now = new Date();
+        const hours = now.getHours().toString().padStart(2, '0');
+        const minutes = now.getMinutes().toString().padStart(2, '0');
+        const seconds = now.getSeconds().toString().padStart(2, '0');
+
+        document.getElementById('hours').textContent = hours;
+        document.getElementById('minutes').textContent = minutes;
+        document.getElementById('seconds').textContent = seconds;
+    }
+
+    // Update the clock every second
+    setInterval(updateClock, 1000);
+
+    // Initial clock update
+    updateClock();
+
+    </script>
+</body>
+</html>
