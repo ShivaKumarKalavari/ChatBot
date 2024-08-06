@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chatbot</title>
+    <link rel="icon" type="image/png" href="https://sites.ipagepro.com/minsky-cottone-cpas-pc/wp-content/uploads/sites/231/2022/12/google.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore VXBot's advanced chatbot technology. Engage in intelligent conversations, receive instant assistance, and discover the innovative features that make VXBot your ultimate virtual companion.">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+
+    <style>
+        /* CSS styles for the chat interface */
+        *, *:before, *:after {
+            box-sizing: inherit;
+        }
+
+        html {
+            box-sizing: border-box;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            font-family: "Roboto", sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chat-container {
+            width: 100%;
+            flex: 1;
+            border: 2px solid #ccc;
+            box-shadow: 0px 0px 5px 0px #ccc;
+            overflow-y: auto;
+            padding: 10px 20px;
+            display: flex;
+            flex-direction: column;
+            background: #B7CECE;
+        }
+
+        .chat-log {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .message-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            margin: 1px 0 5px;
+            min-width: 25%;
+            max-width: 85%;
+        }
+
+        .user-message {
+            background-color: #fff;
+            border-radius: 15px;
+            padding: 10px;
+            border-bottom-right-radius: 0px;
+            margin-left: auto;
+            position: relative;
+            word-wrap: break-word;
+            white-space: normal;
+            display: block;
+        }
+
+        .user-message:after {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 12px 0 0 12px;
+            border-color: transparent transparent transparent #fff;
+            right: -8px;
+            bottom: 0;
+          }
+
+        .bot-message {
+            background-color: #e0e0e0;
+            border-radius: 15px;
+            padding: 10px;
+            position: relative;
+            border-top-left-radius: 0px;
+            word-wrap: break-word;
+            white-space: normal;
+        }
+
+        .bot-message:after {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 10px 0 0 10px;
+            border-color: transparent transparent transparent #e0e0e0;
+            left: -8px;
+            top: 0;
+            transform: rotate(180deg);
+          }
+
+        .username-container {
+            display: block;
+            align-items: center;
+            margin-right: 10px;
+        }
+
+        .username {
+            font-weight: bold;
+            margin-right: 5px;
+        }
+
+        .user-username {
+            color: #007bff;
+        }
+
+        .bot-username {
+            color: #ff5733;
+        }
+
+        .message-input-container {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            padding: 10px;
+            background-color: #fff;
+            width: 100%;
+            margin: 0 auto;
+	        box-shadow: 0px 0px 5px 0px #ccc;
+        }
+
+        .user-input {
+            flex: 1;
+            padding: 10px;
+            border: 1px;
+            border-radius: 5px;
+            background-color: rgba(0, 0, 0, 0.1);
+	        resize: none;
+	        overflow-y: auto;
+	        white-space: normal;
+            word-wrap: break-word;
+    	    max-height: 36px;
+        }
+
+        .send-button {
+            padding: 10px 20px;
+            background-color: #2E2EFF;
+            color: #fff;
+            border: none;
+            display: inline-block;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-left: 10px;
+        }
+
+        .feedback-button {
+            padding: 10px 20px;
+            background-color: #8A4600;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-left: 10px;
+            display: inline-block;
+        }
+
+        /* Light Mode Styles */
+        .light-mode {
+            background-color: rgba(255,255,255,0.5);
+            color: #000;
+
+        }
+
+        .theme-buttons {
+            text-align: right;
+            padding: 10px;
+            background-color: #eee;
+            border-bottom: 1px solid #ccc;
+            position: relative;
+        }
+
+        .theme-buttons button {
+            background-color: rgba(255, 255, 255, 0.8);
+            border: none;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .theme-buttons button:hover {
+            color: #007bff;
+        }
+
+        .dark-mode {
+            background-color: rgba(0, 0, 0, 0.4);
+            color: #12121f; /* Change text color to purple in dark mode */
+        }
+
+        .message-input-container.dark-mode {
+          background-color: #e8e8e8;
+        }
+
+	    .chat-container.dark-mode {
+    	    background: #121212;
+	        background-repeat: no-repeat;
+            background-size: cover;
+    	    object-fit: cover;
+    	}
+
+        .send-button.dark-mode {
+            background-color: #123456;
+            color: #fff;
+        }
+
+        .feedback-button.dark-mode {
+            background-color: #8A4800;
+            color: #fff;
+        }
+
+        /* Styles for the theme toggle switch */
+        .theme-toggle-container {
+            position: relative;
+            height: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 15px 15px 5px;
+            background-color: #000;
+            border-radius: 0px;
+            box-shadow: 0px 0px 5px 0px #ccc;
+        }
+
+        .mode-label {
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .theme-switch {
+            display: inline-block;
+            position: relative;
+            width: 60px;
+            height: 34px;
+            margin-left: 30px;
+        }
+
+        .theme-switch input {
+            display: none;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            -webkit-transition: 0.4s;
+            transition: 0.4s;
+            border-radius: 34px;
+        }
+
+        .theme-switch input:checked + .slider {
+            background-color: #007bff;
+        }
+
+        .theme-switch input:checked + .slider:before {
+            content: "🌙";
+            left: 26px;
+            font-size: 20px;
+        }
+
+        .theme-switch .slider:before {
+            content: "☀️";
+            position: absolute;
+            height: 26px;
+            width: 26px;
+            top: 4px;
+            left: 4px;
+            background-color: #fff;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 26px;
+            color: #007bff;
+            font-size: 16px;
+            -webkit-transition: 0.4s;
+            transition: 0.4s;
+        }
+
+	    .box-5 {
+	        display: inline-block;
+	        font-size: 14px;
+	        margin: 30px 10% 0 10%;
+	        background: #fff;
+	        border: 2px solid orange;
+	        border-radius: 10px;
+	        padding: 10px;
+	        color: black;
+	    }
+
+    	.theme-switch {
+             -webkit-tap-highlight-color: transparent;
+             tap-highlight-color: transparent;
+         }
+
+        .box-5.dark-mode {
+	        background: #5F00CD;
+	        color: #fff;
+        }
+
+#assist-toggle {
+    display: none;
+}
+
+#assist-button {
+    position: fixed;
+    top: 6px;
+    left: 6px;
+    background: #000;
+    color: #fff;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: opacity 0.3s;
+    z-index: 999;
+    -webkit-tap-highlight-color: transparent;
+}
+
+#assist-button p::before {
+    content: "\f0c9"; /* FontAwesome bars icon (default) */
+    font-family: 'Font Awesome 6 Free'; /* Font Awesome 6 class */
+    font-weight: 900;
+    font-size: 30px;
+}
+
+#assist-toggle:checked + #assist-button p::before {
+    content: "\f00d"; /* FontAwesome times icon (checked) */
+}
+
+#assist-toggle:checked + #assist-button + #assist-icons {
+    display: block;
+}
+
+#assist-icons {
+    display: none;
+    position: fixed;
+    top: 78px;
+    left: 12px;
+    z-index: 998;
+}
+
+#assist-icons a {
+    display: block;
+    background-color: #0077d9;
+    color: #fff;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    text-decoration: none;
+    transform: translateY(50px); /* Move the icons behind the button */
+    opacity: 0; /* Make them initially invisible */
+    transition: transform 0.3s, opacity 0.3s;
+    -webkit-tap-highlight-color: transparent;
+}
+
+@keyframes pop-up {
+    0% {
+        transform: translateY(-55px); /* Start behind the button */
+        opacity: 0; /* Initially invisible */
+    }
+    100% {
+        transform: translateY(0); /* Pop up to their original position */
+        opacity: 1; /* Fully visible */
+    }
+}
+
+#assist-icons a:nth-child(1) {
+    animation: pop-up 0.50s ease 0.20s forwards; /* Delay the animation for the first icon */
+}
+
+#assist-icons a:nth-child(2) {
+    animation: pop-up 0.45s ease 0.18s forwards; /* Delay the animation for the second icon */
+}
+
+#assist-icons a:nth-child(3) {
+    animation: pop-up 0.40s ease 0.16s forwards; /* Delay the animation for the second icon */
+}
+
+#assist-icons a:nth-child(4) {
+    animation: pop-up 0.35s ease 0.14s forwards; /* Delay the animation for the second icon */
+}
+
+#assist-icons a:nth-child(5) {
+    animation: pop-up 0.30s ease 0.12s forwards; /* Delay the animation for the second icon */
+}
+
+#assist-icons a:nth-child(6) {
+    animation: pop-up 0.25s ease 0.10s forwards; /* Delay the animation for the second icon */
+}
+
+#assist-icons a:nth-child(7) {
+    animation: pop-up 0.20s ease 0.08s forwards; /* Delay the animation for the second icon */
+}
+
+#assist-icons a:nth-child(8) {
+    animation: pop-up 0.15s ease 0.06s forwards; /* Delay the animation for the second icon */
+}
+
+.tooltip::before {
+    content: attr(name);
+    display: block;
+    position: absolute;
+    background-color: #000;
+    color: #fff;
+    padding: 0 10px 0 10px;
+    border-radius: 10px;
+    width: 60px;
+    font-size: 10px;
+    text-align: center;
+    opacity: 0;
+    transform: translateX(50px);
+    transition: opacity 0s, transform 0.3s;
+    z-index: 1;
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+.tooltip:hover::before {
+    transform: translateX(50px);
+}
+
+.tooltip::after {
+  content: "";
+  position: absolute;
+  top: 30%;
+  left: 75%;
+  margin-left: 5px;
+  border-width: 8px;
+  border-style: solid;
+  visibility: hidden;
+  border-color: transparent #000 transparent transparent;
+}
+
+.tooltip:hover::before, .tooltip:hover::after {
+  opacity: 1;
+  visibility: visible;
+}
+#assist-icons a:hover {
+    background-color: #0056b3;
+}
+.contact-form {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    max-width: 250px;
+    border-radius: 10px;
+    animation: slide-up 0.5s ease-out;
+}
+
+    @keyframes slide-up {
+        from {
+            transform: translateY(100%);
+        }
+        to {
+            transform: translateY(0);
+        }
+    }
+
+.contact-form h2 {
+    margin: 0;
+    color: #0074d9;
+}
+
+.form-group {
+    margin: 10px 0;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: none;
+}
+
+.form-group textarea {
+    height: 100px;
+}
+
+.form-group button {
+    background-color: #0074d9;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.form-group button[type="button"] {
+    background-color: #ccc;
+    margin-left: 10px;
+}
+
+#contact-button:hover {
+    opacity: 1;
+}
+
+#contact-form.active {
+    display: block;
+}
+
+	    .export-button {
+            background: #000;
+            color: white;
+            border: 2px solid white;
+	        border-radius: 8px;
+	        font-size: 18px;
+	        cursor: pointer;
+	        -webkit-tap-highlight-color: transparent;
+        }
+
+    #custom-confirm-dialog {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 110%;
+        background: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(5px);
+        z-index: 11;
+        text-align: center;
+    }
+
+    .custom-confirm-content {
+        position: absolute;
+        top: 45%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 5px 0px #ccc;
+        z-index: 13;
+    }
+
+    #custom-confirm-dialog p {
+        margin: 0;
+        font-size: 16px;
+    }
+
+    #custom-confirm-dialog button {
+        margin: 10px;
+        padding: 10px 15px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    </style>
+</head>
+
+<body>
+<div class="theme-toggle-container">
+    <div class="new-menu">
+    <input type="checkbox" id="assist-toggle"> <!-- Hidden checkbox for assist toggle -->
+    <label for="assist-toggle" id="assist-button"> <!-- Assist button label -->
+        <p></p> <!-- Empty <i> tag for the FontAwesome icon -->
+    </label>
+    <div id="assist-icons">
+        <a href="/" class="tooltip" name="Home"><i class="fas fa-home"></i></a>
+        <a href="/tutorial" class="tooltip" name="Tutorial"><i class="fa-brands fa-leanpub"></i></a>
+        <a href="/login" class="tooltip" name="Login"><i class="fas fa-sign-in-alt"></i></a>
+        <a href="/bot"class="tooltip" name="Chatbot"><i class="fa-solid fa-robot"></i></a>
+        <a href="/history" class="tooltip" id="history-link"><i class="fa-solid fa-history"></i></a>
+        <a href="/details"class="tooltip" name="About"><i class="fa-solid fa-circle-info"></i></a>
+        <a id="contact-button" class="tooltip" name="contact"><i class="fas fa-envelope"></i></a>
+        <a id="logout-link" class="tooltip" name="Logout"><i class="fas fa-sign-out-alt"></i></a>
+    </div>
+    </div>
+        <label class="theme-switch">
+            <input type="checkbox" id="theme-toggle-button" onclick="toggleTheme()">
+            <span class="slider"></span>
+        </label>
+        <button class="export-button" onclick="exportChat()">
+    		<i class="fa-solid fa-download" title="Export Chat"></i>
+	</button>
+    </div>
+    <div class="chat-container" id="chat-container">
+	  <div class="note box-5">
+         <span id="message-text">NOTE-1: Please provide well-structured messages in the message box for better results and send.<br>
+            NOTE-2: If you are providing a feedback type 'feedback: [your_feedback]' and click send.<br>
+            NOTE-3: To learn more about chatbot features, type '/help' or visit our tutorial page.</span>
+          </div>
+
+        <div class="chat-log" id="chat-log">
+            <!-- Chat messages will be displayed here -->
+        </div>
+    </div>
+    <div class="message-input-container">
+        <textarea required class="user-input" id="user-input" placeholder="Type your message..." oninput="adjustTextArea(this)"></textarea>
+        <button class="send-button" onclick="sendMessage()" aria-label="Send Message">
+            <i class="fas fa-paper-plane"></i>
+        </button>
+        <button class="feedback-button" onclick="provideFeedback()" aria-label="Provide Feedback">
+            <i class="fa-solid fa-file-arrow-up"></i>
+        </button>
+    </div>
+    <div id="custom-confirm-dialog" class="overlay">
+    <div class="custom-confirm-content">
+        <p>Are you sure you want to logout?</p>
+        <button id="confirm-logout">Yes</button>
+        <button id="cancel-logout">No</button>
+    </div>
+    </div>
+        <div class="contact-form" id="contact-form">
+        <h2>Contact Us</h2>
+        <form id="myForm" action="/submit_form" method="post">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" required></textarea>
+            </div>
+            <div class="form-group">
+                <button type="submit">Send</button>
+                <button type="button" id="close-button">Close</button>
+            </div>
+        </form>
+        <div id="messageDiv"></div>
+    </div>
+    <script>
+        // Function to toggle theme based on user preference stored in localStorage
+function toggleTheme() {
+    const darkModeToggle = document.getElementById('theme-toggle-button');
+    const isDarkMode = darkModeToggle.checked;
+
+    // Set theme preference in localStorage
+    localStorage.setItem('darkMode', isDarkMode);
+
+    // Apply dark mode styles
+    document.querySelector('.chat-container').classList.toggle('dark-mode', isDarkMode);
+    document.querySelector('.message-input-container').classList.toggle('dark-mode', isDarkMode);
+    document.querySelector('.send-button').classList.toggle('dark-mode', isDarkMode);
+    document.querySelector('.feedback-button').classList.toggle('dark-mode', isDarkMode);
+    document.querySelector('.box-5').classList.toggle('dark-mode',isDarkMode);
+}
+
+// Function to check and apply the theme preference from localStorage
+function applySavedTheme() {
+    const isDarkMode = localStorage.getItem('darkMode') === 'true';
+
+    // Apply dark mode styles
+    document.querySelector('.chat-container').classList.toggle('dark-mode', isDarkMode);
+    document.querySelector('.message-input-container').classList.toggle('dark-mode', isDarkMode);
+    document.querySelector('.send-button').classList.toggle('dark-mode', isDarkMode);
+    document.querySelector('.feedback-button').classList.toggle('dark-mode', isDarkMode);
+    document.querySelector('.box-5').classList.toggle('dark-mode',isDarkMode);
+    // Set the checkbox state based on the saved preference
+    document.getElementById('theme-toggle-button').checked = isDarkMode;
+}
+
+
+        var chatContainer = document.getElementById("chat-container");
+        var messageInputContainer = document.querySelector(".message-input-container");
+        var userInputElement = document.getElementById("user-input");
+
+        function scrollToLatestMessage() {
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+
+        function storeMessage(username, message) {
+            const chatHistory = JSON.parse(localStorage.getItem("chatHistory")) || []
+            chatHistory.push(`${username}: ${message}`)
+            localStorage.setItem("chatHistory", JSON.stringify(chatHistory));
+        }
+
+        function sendMessage() {
+            var userMessage = userInputElement.value;
+            if (userMessage === "") {
+              appendMessage("Bot", "Please enter a message before sending.", false);
+              scrollToLatestMessage();
+              return;
+            }
+            userInputElement.value = "";
+            appendMessage("You", userMessage, true);
+            storeMessage ("You", userMessage);
+
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "/send_message", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    var botResponse = JSON.parse(xhr.responseText).bot_response;
+                    appendMessage("Bot", botResponse, false);
+
+                    // Scroll to the latest message after receiving a response
+                    scrollToLatestMessage();
+                }
+            };
+            xhr.send("user_message=" + encodeURIComponent(userMessage));
+        }
+
+        function appendMessage(username, message, isUser) {
+            var chatLog = document.getElementById("chat-log");
+            var messageContainer = document.createElement("div");
+            var usernameContainer = document.createElement("div");
+            var usernameElement = document.createElement("span");
+
+            messageContainer.className = isUser ? "message-container user-message" : "message-container bot-message";
+            usernameContainer.className = "username-container";
+            usernameElement.className = "username";
+            usernameElement.innerText = username;
+
+            if (isUser) {
+                usernameElement.classList.add("user-username");
+            } else {
+                usernameElement.classList.add("bot-username");
+            }
+
+            usernameContainer.appendChild(usernameElement);
+            messageContainer.appendChild(usernameContainer);
+            messageContainer.innerHTML += message;
+
+            chatLog.appendChild(messageContainer);
+
+            scrollToLatestMessage();
+            checkNoteVisibility();
+        }
+
+        var authorizedKeys = ["xyz680","qaz234"]; // Add your initial key
+        var users = ["xyz","qaz"];
+        function isAuthorized(userKey) {
+	    return authorizedKeys.includes(userKey);
+        }
+        function Authorized(user) {
+	    return users.includes(user);
+        }
+        function isValidGoogleDriveFileID(input) {
+          const idPattern = /^[a-zA-Z0-9-_]{33}$/;
+          return idPattern.test(input);
+        }
+
+    	function provideFeedback() {
+    var user = prompt("Enter your authorization name:");
+    if (user === null) {
+        return;
+    }
+    if (!Authorized(user)) {
+        alert("Invalid user");
+        return;
+    }
+    var userKey = prompt("Enter your authorization key:");
+    if (!isAuthorized(userKey)) {
+        alert("Invalid user key");
+        return;
+    }
+    if (users.indexOf(user) === authorizedKeys.indexOf(userKey)) {
+        var feedback = prompt("Did the bot's response answer your question? (yes/no/y/n): ").toLowerCase();
+        if (feedback === 'no' || feedback === 'n') {
+            var feedbackOption = prompt("Choose an option: (1)Text Answer or (2)Provide a PDF Google Drive ID or LMS Link (1/2): ");
+            if (feedbackOption === '1') {
+                var correctResponse = prompt("Please provide the correct answer: ");
+                if (correctResponse === null) {
+                    return;
+                }
+                if (correctResponse.toLowerCase() === 'same as previous' || correctResponse.toLowerCase() === 'sap') {
+                    correctResponse = previous_response;
+                } else {
+                    var userMessage = userInputElement.value;
+                    previous_question = userMessage;
+                    previous_response = correctResponse;
+                }
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", "/provide_feedback", true);
+                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                xhr.send("user_message=" + encodeURIComponent(previous_question) + "&bot_response=" + encodeURIComponent(correctResponse) + "&feedback=" + encodeURIComponent(feedback));
+                alert("Thank you for providing an answer. We will use this information to improve our responses.");
+            } else if (feedbackOption === '2') {
+                var response = prompt("Enter your PDF Google Drive ID or LMS Link: ");
+                if (response === null) {
+                    return;
+                }
+                if (isValidGoogleDriveFileID(response)) {
+                    var fullLink = `https://drive.google.com/uc?export=download&id=${response}`;  // Generate Google Drive link
+                } else if (response.toLowerCase().includes("lms")) {
+                    var fullLink = response;
+                } else {
+                    alert("Invalid PDF Google Drive File ID or LMS Link.");
+                    return;
+                }
+                var pdfResponse = `Click to get file: <a href="${fullLink}" style="text-decoration: none;"><button>Get File</button></a>`;
+                var userMessage = userInputElement.value;
+                previous_question = userMessage;
+                previous_response = pdfResponse;
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", "/provide_feedback", true);
+                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                xhr.send("user_message=" + encodeURIComponent(previous_question) + "&bot_response=" + encodeURIComponent(pdfResponse) + "&feedback=" + encodeURIComponent(feedback));
+                alert("Thank you for providing the file. We will use this information to improve our responses.");
+            } else {
+                alert("Invalid option. Feedback not provided.");
+            }
+        } else if (feedback === 'yes' || feedback === 'y') {
+            alert("Glad to hear that!");
+        } else {
+            alert("You are not authorized to give feedback.");
+        }
+    } else {
+        alert("Invalid authorization key or username. You are not authorized to provide an answer.");
+    }
+}
+
+
+	function checkNoteVisibility() {
+	     var note = document.querySelector(".note");
+    	     var chatLog = document.getElementById("chat-log");
+             if (chatLog.children.length > 0) {
+                note.style.display = "none";
+             } else {
+                note.style.display = "block";
+             }
+         }
+
+    var userInputElement = document.getElementById("user-input");
+
+    function adjustInputSize() {
+        userInputElement.style.height = "auto";
+        userInputElement.style.height = (userInputElement.scrollHeight) + "px";
+    }
+
+    userInputElement.addEventListener("input", adjustInputSize);
+
+    window.addEventListener("load", adjustInputSize);
+
+    userInputElement.addEventListener("keydown", function (event) {
+        if (event.key === "Enter" && !event.shiftKey) {
+            event.preventDefault();
+            sendMessage();
+        }
+    });
+
+            document.getElementById("contact-button").addEventListener("click", function() {
+               var contactForm = document.getElementById("contact-form");
+               contactForm.classList.toggle("active");
+            });
+
+            document.getElementById("close-button").addEventListener("click", function() {
+               var contactForm = document.getElementById("contact-form");
+               contactForm.classList.remove("active");
+            });
+            function displayMessage(message) {
+            const form = document.getElementById("myForm");
+            const messageDiv = document.getElementById("messageDiv");
+
+            messageDiv.textContent = message;
+            messageDiv.style.color = "green";
+            messageDiv.style.fontSize = "10px";
+
+            form.reset();
+            setTimeout(function () {
+               messageDiv.textContent= "";
+            }, 2000);
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const form = document.getElementById("myForm");
+
+            form.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            const formData = new FormData(form);
+
+            fetch("/submit_form", {
+               method: "POST",
+               body: formData
+            })
+            .then(response => response.text())
+            .then(data => {
+               displayMessage(data);
+            })
+            .catch(error => {
+               displayMessage("Data submission failed.");
+            });
+          });
+        });
+    function exportChat() {
+    const chatLog = document.getElementById("chat-log");
+    const chatMessages = chatLog.querySelectorAll(".message-container");
+    let chatContent = [];
+
+    chatMessages.forEach((message) => {
+        const username = message.querySelector(".username").innerText;
+        const messageText = message.innerText.replace(username, '').trim();
+
+        if (username.includes("Bot")) {
+            chatContent.push(`Answer: ${messageText}\n`);
+        } else {
+            chatContent.push(`Question: ${messageText}\n`);
+        }
+    });
+
+    const blob = new Blob([chatContent.join("")], { type: "text/plain" });
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = "chat.txt";
+    link.click();
+}
+
+
+    var isLogin = localStorage.getItem('isLogin');
+
+    function showLoginMessage() {
+        var loginMessage = document.getElementById('login-message');
+        loginMessage.style.display = 'block';
+    }
+
+    function hideLoginMessage() {
+        var loginMessage = document.getElementById('login-message');
+        loginMessage.style.display = 'none';
+    }
+
+    document.getElementById('logout-link').addEventListener('click', function () {
+        var isLogged = localStorage.getItem('isLogin');
+        if (isLogged === 'true') {
+            // Show the custom confirm dialog
+            document.getElementById('custom-confirm-dialog').style.display = 'block';
+        } else {
+            alert("You are not logged in.");
+        }
+    });
+
+    if (isLogin === 'true') {
+    var historyLink = document.getElementById('history-link');
+    historyLink.href = '/history';
+    historyLink.name= "History";
+    } else {
+    var historyLink = document.getElementById('history-link');
+    historyLink.removeAttribute('href');
+    historyLink.name = 'History 🔒'; // Change the content of the title attribute
+}
+
+    document.getElementById('confirm-logout').addEventListener('click', function () {
+        localStorage.setItem('isLogin', 'false');
+        window.location.href = '/logout';
+    });
+
+    document.getElementById('cancel-logout').addEventListener('click', function () {
+        document.getElementById('custom-confirm-dialog').style.display = 'none';
+    });
+    // Apply the saved theme on page load
+applySavedTheme();
+
+    </script>
+</body>
+</html>
