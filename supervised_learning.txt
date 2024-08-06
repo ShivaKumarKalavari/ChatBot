@@ -1,0 +1,248 @@
+User Message: hola
+Bot Response: Hola
+Feedback: no
+
+User Message: adios
+Bot Response: Adios!
+Feedback: no
+
+User Message: Adios!
+Bot Response: See you lator. Aligator!
+Feedback: no
+
+User Message: hiii
+Bot Response: Heyy
+Feedback: no
+
+User Message: how are you
+Bot Response: I am well
+Feedback: no
+
+User Message: when
+Bot Response: What? Please give proper question for me to look into it
+Feedback: no
+
+User Message: what
+Bot Response: Don't know
+Feedback: no
+
+User Message: what are you?
+Bot Response: I am a ChatBot
+Feedback: no
+
+User Message: ara ara
+Bot Response: Sayonaraa!
+Feedback: no
+
+User Message: hello good morning
+Bot Response: Good morning!
+Feedback: no
+
+User Message: OMG
+Bot Response: Its an acronym for Oh My God!!!
+Feedback: no
+
+User Message: hello! How are you?
+Bot Response: Hey! I am well.
+Feedback: no
+
+User Message: What is software engineering?
+Bot Response: Software engineering is a systematic approach to designing, developing, and maintaining software. It involves a disciplined and structured process to create high-quality software that meets user requirements.
+Feedback: no
+
+User Message: What is the Software Development Life Cycle (SDLC)?
+Bot Response: The SDLC is a structured process for planning, creating, testing, and maintaining software systems. It includes phases like requirements gathering, design, coding, testing, deployment, and maintenance.
+Feedback: no
+
+User Message: What is the Agile software development methodology?
+Bot Response: Agile is an iterative and incremental approach to software development. It prioritizes customer collaboration, flexibility, and the delivery of functional software in short iterations.
+Feedback: no
+
+User Message: Explain the difference between software testing and software quality assurance (SQA).
+Bot Response: Software testing focuses on identifying and fixing defects in a software product, while SQA encompasses a broader range of activities aimed at ensuring the quality and reliability of the software development process.
+Feedback: no
+
+User Message: What is version control in software development?
+Bot Response: Version control is a system that tracks changes to source code and other software files. It allows multiple developers to work on a project simultaneously and provides a history of changes.
+Feedback: no
+
+User Message: What is a software requirement specification (SRS)?
+Bot Response: An SRS is a document that defines the detailed requirements for a software system. It includes functional and non_functional requirements, use cases, and system constraints.
+Feedback: no
+
+User Message: What is the purpose of the Requirements Analysis phase in software development?
+Bot Response: The Requirements Analysis phase is the initial step in software development. It involves gathering, documenting, and analyzing user requirements. The goal is to understand the needs of the end users, which serve as the basis for the entire development process. Accurate requirements analysis helps in building software that aligns with user expectations.
+Feedback: no
+
+User Message: Explain the concept of version control in software development.
+Bot Response: Version control is a fundamental practice in software development. It involves tracking and managing changes to source code and other project files. This ensures that developers can collaborate efficiently, roll back to previous versions if needed, and maintain a history of changes. Common version control systems include Git and SVN.
+Feedback: no
+
+User Message: What is the Agile software development methodology?
+Bot Response: Agile is an iterative and flexible approach to software development. It focuses on collaboration, customer feedback, and the delivery of small, functional increments of the software. Agile methodologies, such as Scrum and Kanban, prioritize adaptability and responsiveness to changing requirements.
+Feedback: no
+
+User Message: What are the key principles of the Scrum framework?
+Bot Response: Scrum is a widely used Agile framework with several key principles, including transparency, inspection, and adaptation. Scrum teams work in fixed timeframes called "sprints" and regularly inspect and adapt their work. Other principles include self-organizing teams and delivering a "potentially shippable product increment" at the end of each sprint.
+Feedback: no
+
+User Message: Why is Software Engineering required?
+Bot Response: Software Engineering is required for the following reasons:/ To manage large software projects./ For more scalability./ Cost management./ To manage the dynamic nature of software./ For better quality management.
+Feedback: no
+
+User Message: What is the Necessity of Software Engineering?
+Bot Response: The necessity of software engineering arises due to the higher rate of progress in user requirements and the dynamic environment in which software operates. It includes factors such as handling huge programming, adaptability, cost management, dynamic nature, and quality management.
+Feedback: no
+
+User Message: What Are the Characteristics of a Good Software Engineer?
+Bot Response: Good software engineers possess the following characteristics: / Exposure to systematic methods, i.e., familiarity with software engineering principles. / Good technical knowledge of the project domain. / Strong programming abilities. / Effective communication skills, including oral, written, and interpersonal communication. / High motivation. / Sound knowledge of computer science fundamentals. / Intelligence. / Ability to work in a team./ Discipline.
+Feedback: no
+
+User Message: What is the Importance of Software Engineering?
+Bot Response: The importance of Software Engineering lies in the following aspects:/ Reducing complexity by breaking down large problems into smaller, manageable issues./ Minimizing software costs by efficient planning and reducing unnecessary elements./ Decreasing development time by following a structured approach./ Handling big projects through proper planning, direction, testing, and maintenance./ Ensuring reliable software by addressing bugs and maintenance./ Achieving effectiveness through adherence to software standards.
+Feedback: no
+
+User Message: Software re-engineering?
+Bot Response: Software re-engineering is the process of scanning, modifying, and reconfiguring a system in a new way. The principle of re-engineering applied to the software development process is called software re-engineering. It has a positive impact on software cost, quality, customer service, and shipping speed. Software reengineering improves software to create it more efficiently and effectively.
+Feedback: no
+
+User Message: Unit 3 III notes
+Bot Response: Get it in this PDF : <a href="https://drive.google.com/uc?export=download&id=11UDNPY6PTeZrA8TYto8ofhAvbXXIeuiB" style="text-decoration: none;" download="Answer_Notes.pdf"><button>Get PDF</button></a>
+Feedback: no
+
+User Message: What activities come under the umbrella activities?
+Bot Response: The activities of the software engineering process framework are complemented by a variety of higher-level activities. Umbrella activities typically apply to the entire software project and help the software team manage and control progress, quality, changes, and risks. Common top activities include Software Project Tracking and Control Risk Management, Software Quality Assurance Technical Review Measurement Software Configuration Management Reusability Management Work Product Preparation and Production, etc.
+Feedback: no
+
+User Message: What are the various phases of SDLC?
+Bot Response: SDLC phases:/ Requirement gathering & analysis/ Design/ Implementation & coding/ Testing/ Deployment/ Maintenance
+Feedback: no
+
+User Message: What is Black box testing
+Bot Response: The black box test (also known as the conducted test closed box test opaque box test) is centered around software useful prerequisites. In other words, it is possible to guess a set of information conditions that help the program through an attempt to discover and fulfill all the necessities perfectly. There is no choice of black-box testing white box procedures. Maybe it’s a complementary methodology, perhaps the white box method will reveal the errors of other classes.
+Feedback: no
+
+User Message: What is reverse engineering?
+Bot Response: Software Reverse Engineering is a process of recovering the design, requirement specifications, and functions of a product from an analysis of its code. It builds a program database and generates information from this. The purpose of reverse engineering is to facilitate maintenance work by improving the understandability of a system and producing the necessary documents for a legacy system.
+Feedback: n
+
+User Message: What is a Feasibility Study?
+Bot Response: The Feasibility Study in Software Engineering is a study to assess the adequacy of proposed projects and systems. A feasibility study is a measure of a software product on how product development can benefit an organization from a validity analysis or practical point of view. Feasibility studies are conducted for multiple purposes to analyze the correctness of a software product in terms of development, porting, the contribution of an organization’s projects, and so on.
+Feedback: n
+
+User Message: What is cohesion and coupling?
+Bot Response: Cohesion indicates the relative functional capacity of the module. Aggregation modules need to interact less with other sections of other parts of the program to perform a single task. It can be said that only one coagulation module (ideally) needs to be run. Cohesion is a measurement of the functional strength of a module. A module with high cohesion and low coupling is functionally independent of other modules. Here, functional independence means that a cohesive module performs a single operation or function. The coupling means the overall association between the modules. Coupling relies on the information delivered through the interface with the complexity of the interface between the modules in which the reference to the section or module was created. High coupling support Low coupling modules assume that there are virtually no other modules. It is exceptionally relevant when both modules exchange a lot of information. The level of coupling between two modules depends on the complexity of the interface.
+Feedback: n
+
+User Message: unit 1 I notes
+Bot Response: Get it in this PDF : <a href="https://drive.google.com/uc?export=download&id=1kEWROsmSs8R-JPqUBow7HshYwxqhe-Fo" style="text-decoration: none;" download="Answer_Notes.pdf"><button>Get PDF</button></a>
+Feedback: no
+
+User Message: Unit 2 ii notes
+Bot Response: Get it in this PDF: <a href="https://drive.google.com/uc?export=download&id=1Q-J5nvhLl13nKZE0mWt5fCzvgGR8ZBMp" style="text-decoration: none;" download="Answer_Notes.pdf"><button>Get PDF</button></a>
+Feedback: no
+
+User Message: SE Assignment 1
+Bot Response: Get it in this PDF: <a href="https://drive.google.com/uc?export=download&id=1TqjbfSqwY41YwIVtKCfoLnTKd3EtueHH" style="text-decoration: none;"><button>Get PDF</button></a>
+Feedback: no
+
+User Message: se unit 4 notes
+Bot Response: Get it in this PDF: <a href="https://drive.google.com/uc?export=download&id=1zrex9MRCI-9fGv1VmXfdETv4ntoex-iD" style="text-decoration: none;color:red;" download="Answer_Notes.pdf"><button>Get PDF</button></a>
+Feedback: no
+
+User Message: What is software re-engineering?
+Bot Response: Software re-engineering is the process of scanning, modifying, and reconfiguring a system in a new way. The principle of re-engineering applied to the software development process is called software re-engineering. It has a positive impact on software cost, quality, customer service, and shipping speed. Software re-engineering improves software to create it more efficiently and effectively.
+Feedback: no
+
+User Message: Nice
+Bot Response: Much appreciated! 🙌
+Feedback: no
+
+User Message: what is white box testing
+Bot Response: White Box Testing is a method of analyzing the internal structure, data structures used, internal design, code structure, and behavior of software, as well as functions such as black-box testing. Also called glass-box test or clear box test or structural test.
+Feedback: no
+
+User Message: What's your age?
+Bot Response: I am a chatbot I don't have definite age like humans do.
+Feedback: no
+
+User Message: /help
+Bot Response: Visit the link for help.<a href="/tutorial">/help</a>
+Feedback: no
+
+User Message: Explain agile in software development
+Bot Response: Scrum, Kanban, and XP are common Agile frameworks used by development teams.
+Feedback: no
+
+User Message: chatbot features
+Bot Response: Our chatbot offers the following features:/Interactive chat interface with real-time responses./Dark mode and light mode for your comfort./Export chat conversations for future reference./Mobile-friendly design for on-the-go usage.
+Feedback: no
+
+User Message: ice
+Bot Response: Cold! 😂
+Feedback: no
+
+User Message: What is software development?
+Bot Response: Software development is the process of creating and maintaining software applications and systems.
+Feedback: no
+
+User Message:
+Bot Response: Please send a message I can read.
+Feedback: no
+
+User Message: really
+Bot Response: Yeah for sure!
+Feedback: no
+
+User Message: Jawaan movie
+Bot Response: Click to get file: <a href="https://drive.google.com/uc?export=download&id=1Zrw4XgrBHvYJLrIuGNvf2BVq7pXHkemQ" style="text-decoration: none;"><button>Get File</button></a>
+Feedback: no
+
+User Message: What's going on?
+Bot Response: I don't know you tell me!
+Feedback: no
+
+User Message: Listen
+Bot Response: I am listening
+Feedback: no
+
+User Message: ACD Unit 2 notes
+Bot Response: Click to get file: <a href="https://lms.mlrit.ac.in/mod/resource/view.php?id=16612" style="text-decoration: none;"><button>Get File</button></a>
+Feedback: no
+
+User Message: Prime program
+Bot Response: echo "Enter number :"/read a/is_prime=true/for ((i=2; i<a; i++)); do/   if [ $((a % i)) -eq 0 ];/ then/    is_prime=false/    break/fi/done/if /$is_prime; /then/echo "$a is prime."/else/echo "$a is not prime."/fi
+Feedback: no
+
+User Message: Wow
+Bot Response: Thanks! 
+Feedback: no
+
+User Message: Excuse me
+Bot Response: Excused! 
+Feedback: no
+
+User Message: How r u
+Bot Response: I am well
+Feedback: no
+
+User Message: Great
+Bot Response: Thanks! 
+Feedback: no
+
+User Message: Hahaha
+Bot Response: Giggles  (ʘᴗʘ)
+Feedback: no
+
+User Message: lol
+Bot Response: Hehe!
+Feedback: no
+
+User Message: rofl
+Bot Response: Giggles!
+Feedback: no
+
+User Message: IkYk
+Bot Response: I might know please say clearly!
+Feedback: no
+
