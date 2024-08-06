@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en-IN" dir="ltr">
+<head>
+    <title>Chatbot Tutorial</title>
+    <meta charset="UTF-8">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"></noscript>
+    <meta name="description" content="Explore comprehensive tutorials at VXBot. Learn how to use our advanced features, integrate the chatbot into your projects, and master the art of virtual assistance. Enhance your skills with step-by-step guides and valuable insights.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+
+        /* Reset some default styles */
+        body, h1, h2, p {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff;
+            color: #333;
+            width: 100%;
+            height: 100%;
+        }
+
+        .div-container {
+            display: flex;
+            justify-content: center-left;
+            background-color: #000;
+            color: white;
+            padding: 20px 10px 10px;
+            height: 45px;
+
+        }
+
+        /* Tutorial container styles */
+        .tutorial-container {
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .tutorial-container h1 {
+            color: #008EFF;
+            text-align: center;
+            font-size: 30px;
+            margin: 10px 0;
+        }
+
+        .p1 {
+            text-align: center;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        /* Section styles */
+        .section {
+            margin: 30px 0;
+            border-left: 4px solid #007BFF;
+            padding-left: 20px;
+        }
+
+        h2 {
+            font-size: 28px;
+            color: #555;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.5;
+        }
+
+        /* List styles */
+        ol, ul {
+            padding: 0 20px;
+            font-size: 18px;
+            line-height: 1.5;
+        }
+
+        /* Start Chat button styles */
+        .start-chat-button {
+            display: inline-block;
+            text-align: center;
+            background-color: #2E2EFF;
+            color: #fff;
+            text-decoration: none;
+            font-size: 24px;
+            padding: 15px 30px;
+            margin: 20px auto;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .start-chat-button:hover {
+            background-color: #0056b3;
+        }
+
+#assist-toggle {
+    display: none;
+}
+
+#assist-button {
+    position: fixed;
+    top: 12px;
+    left: 6px;
+    background: #000;
+    color: #fff;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: opacity 0.3s;
+    z-index: 999;
+    -webkit-tap-highlight-color: transparent;
+}
+
+#assist-button p::before {
+    content: "\f0c9"; /* FontAwesome bars icon (default) */
+    font-family: 'Font Awesome 6 Free'; /* Font Awesome 6 class */
+    font-weight: 900;
+    font-size: 30px;
+}
+
+#assist-toggle:checked + #assist-button p::before {
+    content: "\f00d"; /* FontAwesome times icon (checked) */
+}
+
+#assist-toggle:checked + #assist-button + #assist-icons {
+    display: block;
+}
+
+#assist-icons {
+    display: none;
+    position: fixed;
+    top: 78px;
+    left: 12px;
+    z-index: 998;
+}
+
+#assist-icons a {
+    display: block;
+    background-color: #0077d9;
+    color: #fff;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    text-decoration: none;
+    transform: translateY(50px); /* Move the icons behind the button */
+    opacity: 0; /* Make them initially invisible */
+    transition: transform 0.3s, opacity 0.3s;
+    -webkit-tap-highlight-color: transparent;
+}
+
+@keyframes pop-up {
+    0% {
+        transform: translateY(-55px); /* Start behind the button */
+        opacity: 0; /* Initially invisible */
+    }
+    100% {
+        transform: translateY(0); /* Pop up to their original position */
+        opacity: 1; /* Fully visible */
+    }
+}
+
+#assist-icons a:nth-child(1) {
+    animation: pop-up 0.50s ease 0.20s forwards; /* Delay the animation for the first icon */
+}
+
+#assist-icons a:nth-child(2) {
+    animation: pop-up 0.45s ease 0.18s forwards; /* Delay the animation for the second icon */
+}
+
+#assist-icons a:nth-child(3) {
+    animation: pop-up 0.40s ease 0.16s forwards; /* Delay the animation for the second icon */
+}
+
+#assist-icons a:nth-child(4) {
+    animation: pop-up 0.35s ease 0.14s forwards; /* Delay the animation for the second icon */
+}
+
+#assist-icons a:nth-child(5) {
+    animation: pop-up 0.30s ease 0.12s forwards; /* Delay the animation for the second icon */
+}
+
+#assist-icons a:nth-child(6) {
+    animation: pop-up 0.25s ease 0.10s forwards; /* Delay the animation for the second icon */
+}
+
+#assist-icons a:nth-child(7) {
+    animation: pop-up 0.20s ease 0.08s forwards; /* Delay the animation for the second icon */
+}
+
+.tooltip::before {
+    content: attr(name);
+    display: block;
+    position: absolute;
+    background-color: #000;
+    color: #fff;
+    padding: 0 10px 0 10px;
+    border-radius: 10px;
+    min-width: 40px;
+    font-size: 10px;
+    text-align: center;
+    opacity: 0;
+    transform: translateX(50px);
+    transition: opacity 0s, transform 0.3s;
+    z-index: 1;
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+.tooltip:hover::before {
+    transform: translateX(50px);
+}
+
+.tooltip::after {
+  content: "";
+  position: absolute;
+  top: 30%;
+  left: 75%;
+  margin-left: 5px;
+  border-width: 8px;
+  border-style: solid;
+  visibility: hidden;
+  border-color: transparent #000 transparent transparent;
+}
+
+.tooltip:hover::before, .tooltip:hover::after {
+  opacity: 1;
+  visibility: visible;
+}
+
+
+#assist-icons a:hover {
+    background-color: #0056b3;
+}
+.contact-form {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #fff;
+    padding: 20px 40px 20px 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    max-width: 200px;
+    border-radius: 10px;
+    animation: slide-up 0.5s ease-out;
+}
+
+    @keyframes slide-up {
+        from {
+            transform: translateY(100%);
+        }
+        to {
+            transform: translateY(0);
+        }
+    }
+.contact-form h2 {
+    margin: 0;
+    color: #0074d9;
+}
+
+.form-group {
+    margin: 10px 0;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: none;
+}
+
+.form-group textarea {
+    height: 100px;
+}
+
+.form-group button {
+    background-color: #0074d9;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.form-group button[type="button"] {
+    background-color: #ccc;
+    margin-left: 10px;
+}
+
+#contact-button:hover {
+    opacity: 1;
+}
+
+#contact-form.active {
+    display: block;
+}
+
+
+
+    #custom-confirm-dialog {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 110%;
+        background: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(5px);
+        z-index: 11;
+        text-align: center;
+    }
+
+    .custom-confirm-content {
+        position: absolute;
+        top: 45%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 5px 0px #ccc;
+        z-index: 13;
+    }
+
+    #custom-confirm-dialog p {
+        margin: 0;
+        font-size: 16px;
+    }
+
+    #custom-confirm-dialog button {
+        margin: 10px;
+        padding: 10px 15px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    .footer {
+            background: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        .footer p {
+            font-size: 18px;
+            padding: 10px;
+        }
+.social-media a {
+    text-decoration: none;
+    color: white;
+    padding: 0;
+    margin: 0 2px;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.social-media a:hover {
+    color: #0074cc;
+}
+@media (min-width: 775px) {
+    .social-media a {
+        margin: 0 5px;
+    }
+
+    .contact-button i {
+        font-size: 32px;
+    }
+}
+    </style>
+</head>
+<body>
+    <div class="div-container">
+    <input type="checkbox" id="assist-toggle"> <!-- Hidden checkbox for assist toggle -->
+    <label for="assist-toggle" id="assist-button"> <!-- Assist button label -->
+        <p></p> <!-- Empty <i> tag for the FontAwesome icon -->
+    </label>
+    <div id="assist-icons">
+        <a href="/" class="tooltip" name="Home"><i class="fas fa-home"></i></a>
+        <a href="/tutorial" class="tooltip" name="Tutorial"><i class="fa-brands fa-leanpub"></i></a>
+        <a href="/login" class="tooltip" name="Login"><i class="fas fa-sign-in-alt"></i></a>
+        <a href="/bot"class="tooltip" name="Chatbot"><i class="fa-solid fa-robot"></i></a>
+        <a href="/details"class="tooltip" name="About"><i class="fa-solid fa-circle-info"></i></a>
+        <a id="contact-button" class="tooltip" name="contact"><i class="fas fa-envelope"></i></a>
+        <a id="logout-link" class="tooltip" name="Logout"><i class="fas fa-sign-out-alt"></i></a>
+    </div>
+    </div>
+    <div class="tutorial-container">
+        <h1>Welcome to the VXBot Tutorial</h1>
+        <p class="p1">Explore the features of our chatbot and learn how to get the most out of it.</p>
+        <div class="section">
+            <h2>Getting Started</h2>
+            <p>Follow these simple steps to use the chatbot:</p>
+            <ol>
+                <li>Type your message in the input field.</li>
+                <li>Click the "Send" button to send your message to the chatbot.</li>
+                <li>If you have a feedback type feedback: [your_feedback] and click send.</li>
+            </ol>
+        </div>
+
+        <div class="section">
+            <h2>Chat Features</h2>
+            <p>Our chatbot offers the following features:</p>
+            <ul>
+                <li>Interactive chat interface with real-time responses.</li>
+                <li>Dark mode and light mode for your comfort.</li>
+                <li>Export chat conversations for future reference.</li>
+                <li>Mobile-friendly design for on-the-go usage.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Authorization</h2>
+            <p>We value your input and expertise. Here's how you can help:</p>
+            <ol>
+                <li>You can provide answer only if you are authorized by developers.</li>
+                <li>If you have an answer to a user's question, provide it using the "Provide Answer" button.</li>
+                <li>When providing an answer, be sure to use '/' to separate multiple points if needed.</li>
+                <li>If you have a file with the answer, provide an openly accessible Google Drive File ID or LMS link.</li>
+            </ol>
+        </div>
+
+        <div class="section">
+            <h2>Theme and Navigation</h2>
+            <p>Customize your experience with the following options:</p>
+            <ul>
+                <li>Switch between dark and light themes using the theme toggle button.</li>
+                <li>Access the menu for quick navigation.</li>
+                <li>You can access the "History" link in the side menu only when you <strong>login</strong>.</li>
+            </ul>
+        </div>
+        <div class="section">
+            <h2>Contact Form</h2>
+            <p>Reach out to us using the contact form:</p>
+            <ul>
+                <li>Click the contact icon to activate the form.</li>
+                <li>Provide your name, email, and message in the respective fields.</li>
+                <li>Submit the form for further assistance.</li>
+                <li>Confirmation or error messages will be displayed below the form.</li>
+            </ul>
+        </div>
+        <div class="section">
+            <h2>Logout</h2>
+            <p>If you wish to log out, click the <strong>Logout</strong> icon in the menu. You will be prompted to confirm your decision.</p>
+            <p>Upon confirmation, you will be redirected to the home page.</p>
+        </div>
+        <div class="section">
+            <h2>Have Fun and Engage!</h2>
+            <p>Explore, ask questions, and provide answers. Our chatbot is here to assist you.</p>
+            <p>Don't forget to check out the <a href="/details">About</a> page to:</p>
+            <ul>
+                <li>Join discussions in the comments section.</li>
+                <li>Find answers to frequently asked questions in the FAQ section.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Start Chatting</h2>
+            <p>Click the button below to start chatting with our chatbot:</p>
+            <a href="/bot" class="start-chat-button">Start Chat</a>
+        </div>
+    </div>
+    <div id="custom-confirm-dialog" class="overlay">
+    <div class="custom-confirm-content">
+        <p>Are you sure you want to logout?</p>
+        <button id="confirm-logout">Yes</button>
+        <button id="cancel-logout">No</button>
+    </div>
+    </div>
+    <div class="contact-form" id="contact-form">
+        <h2>Contact Us</h2>
+        <form id="myForm" action="/submit_form" method="post">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" required></textarea>
+            </div>
+            <div class="form-group">
+                <button type="submit">Send</button>
+                <button type="button" id="close-button">Close</button>
+            </div>
+        </form>
+      <div id="messageDiv"></div>
+    </div>
+    <div class="footer">
+    <p>Connect with us on social media:</p>
+       <!-- Social media icons using FontAwesome -->
+       <div class="social-media">
+            <a aria-label="Facebook" href="https://github.com/404">
+                <i class="fab fa-facebook fa-2x"></i>
+            </a>
+            <a aria-label="Twitter" href="https://github.com/404">
+                <i class="fab fa-twitter fa-2x"></i>
+            </a>
+            <a aria-label="Instagram" href="https://github.com/404">
+                <i class="fab fa-instagram fa-2x"></i>
+            </a>
+            <a aria-label="Discord" href="https://github.com/404">
+                <i class="fab fa-discord fa-2x"></i>
+            </a>
+            <a aria-label="Snapchat" href="https://github.com/404">
+                <i class="fab fa-snapchat fa-2x"></i>
+            </a>
+        </div>
+       <p>MLRIT MINIPROJECT 2023</p>
+    </div>
+    <script>
+        document.getElementById('logout-link').addEventListener('click', function () {
+            var isLogged = localStorage.getItem('isLogin');
+
+            if (isLogged === 'true') {
+                document.getElementById('custom-confirm-dialog').style.display = 'block';
+            } else {
+                alert("You are not logged in.");
+            }
+        });
+
+        document.getElementById('confirm-logout').addEventListener('click', function () {
+           localStorage.setItem('isLogin', 'false');
+           window.location.href = '/logout';
+        });
+
+        document.getElementById('cancel-logout').addEventListener('click', function () {
+           document.getElementById('custom-confirm-dialog').style.display = 'none';
+        });
+
+            document.getElementById("contact-button").addEventListener("click", function() {
+               var contactForm = document.getElementById("contact-form");
+               contactForm.classList.toggle("active");
+            });
+
+            document.getElementById("close-button").addEventListener("click", function() {
+               var contactForm = document.getElementById("contact-form");
+               contactForm.classList.remove("active");
+            });
+
+        function displayMessage(message) {
+            const form = document.getElementById("myForm");
+            const messageDiv = document.getElementById("messageDiv");
+
+            messageDiv.textContent = message;
+            messageDiv.style.color = "green";
+            messageDiv.style.fontSize = "10px";
+
+            form.reset();
+            setTimeout(function () {
+               messageDiv.textContent= "";
+            }, 2000);
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const form = document.getElementById("myForm");
+
+            form.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            const formData = new FormData(form);
+
+            fetch("/submit_form", {
+               method: "POST",
+               body: formData
+            })
+            .then(response => response.text())
+            .then(data => {
+               displayMessage(data);
+            })
+            .catch(error => {
+               displayMessage("Data submission failed.");
+            });
+          });
+        });
+    </script>
+</body>
+</html>
