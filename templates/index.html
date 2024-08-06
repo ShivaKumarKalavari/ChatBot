@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en-IN" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore VXBot, your friendly virtual assistant! Welcome to a world where innovation meets dedication. Discover our cutting-edge projects, achievements, and the exciting journey of VXBot. Join us in shaping the future of virtual assistance with advanced algorithms and innovative solutions. Connect with us, stay informed, and experience the future with VXBot.">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Cache-control" content="public">
+    <meta http-equiv="Expires" content="max-age=31536000, must-revalidate">
+    <style>
+        body {
+            background-attachment: fixed;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            height: 100%;
+            font-display: swap;
+        }
+
+        .body-home {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 10px;
+        }
+
+        .div-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #000;
+            color: white;
+        }
+
+        .new-menu {
+            margin-right: 40px;
+        }
+
+        .ring {
+            display: inline-block;
+            background-color: #2E2EFF;
+            border: 4px solid #fff;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 24px;
+        }
+
+        .welcome-section {
+            text-align: center;
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.85);
+            padding: 40px 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .welcome-section h1 {
+            font-size: 36px;
+            color: #354b6f;
+            margin-bottom: 20px;
+        }
+
+        .welcome-section p {
+            font-size: 20px;
+            color: #000;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .welcome-section .btn-primary {
+            background-color: #2E2EFF;
+            border-color: #007BFF;
+            font-weight: bold;
+            padding: 12px 28px;
+            font-size: 18px;
+            border-radius: 20px;
+            text-decoration: none;
+            color: #fff;
+            display: inline-block;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+
+        .welcome-section .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+        .welcome-section .point {
+            font-size: 16px;
+            color: #000;
+        }
+
+.div-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #000;
+    color: white;
+}
+
+.nav-link {
+    margin-right: 10px;
+    color: #fff;
+    font-weight: bold;
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+    margin: 25px 10px auto 2px;
+}
+
+.new-menu {
+    margin-right: 40px;
+}
+
+.container-slide {
+    text-align: center;
+}
+
+
+.btn-primary {
+    background-color: #2E2EFF;
+    outline: 1px solid #666666;
+    font-weight: bold;
+    padding: 8px 23px;
+    font-size: 18px;
+    border-radius: 18px;
+    text-decoration: none;
+    color: #fff;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.ring {
+    display: inline-block;
+    background-color: transparent;
+    border: 4px solid #fff;
+    padding: 10px 20px;
+    border-radius: 20px;
+}
+
+.active a {
+    background-color: #1e90ff;
+    z-index: 1;
+}
+
+.footer {
+    background: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    display: block;
+    bottom: 0;
+}
+
+.footer p {
+    font-size: 18px;
+}
+
+.info-section {
+    background: #ffffff;
+    padding: 20px 30px 30px 30px;
+    margin: 0 0 5px;
+}
+
+.info-section h2 {
+    font-size: 32px;
+    color: #354b6f;
+    margin-bottom: 20px;
+}
+
+.info-section p {
+    font-size: 18px;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.info-section .btn-primary {
+    background-color: #2E2EFF;
+    color: #fff;
+    padding: 12px 24px;
+    font-size: 16px;
+    text-decoration: none;
+    border-radius: 8px;
+    display: inline-block;
+    transition: background-color 0.3s;
+}
+
+.info-section .btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.info-section:last-child {
+    margin-bottom: 0;
+}
+
+.gates-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #354b6f;
+    color: #fff;
+    margin: 0;
+}
+
+.gates-content {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.gate {
+    flex: 0 0 33.33%;
+    box-sizing: border-box;
+    padding: 20px;
+    text-align: center;
+}
+
+.gate i {
+    font-size: 50px;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.gate-caption {
+    font-size: 16px;
+}
+
+.social-media a {
+    font-display: swap;
+    text-decoration: none;
+    color: white;
+    padding: 0;
+    margin: 0 2px;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.social-media a:hover {
+    color: #0074cc;
+}
+
+@media (max-width: 768px) {
+    .welcome-section p {
+        font-size: 18px;
+    }
+}
+
+#custom-confirm-dialog {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 110%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    z-index: 11;
+    text-align: center;
+}
+
+.custom-confirm-content {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px 0px #ccc;
+    z-index: 13;
+}
+
+#custom-confirm-dialog p {
+    margin: 0;
+    font-size: 16px;
+}
+
+#custom-confirm-dialog button {
+    margin: 10px;
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+
+@media (min-width: 775px) {
+    .social-media a {
+        margin: 0 5px;
+    }
+
+    .contact-button i {
+        font-size: 32px;
+    }
+}
+
+#intro-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    color: white;
+    opacity: 1;
+    transition: opacity 2s;
+}
+
+#intro-text {
+    font-size: 45px;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-shadow: 3px 3px 5px rgba(255, 255, 255, 0.4);
+}
+
+.contact-form {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #fff;
+    padding: 20px 40px 20px 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    max-width: 200px;
+    border-radius: 10px;
+    animation: slide-up 0.5s ease-out;
+}
+
+@keyframes slide-up {
+    from {
+        transform: translateY(100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+.contact-form h2 {
+    margin: 0;
+    color: #0074d9;
+}
+
+.form-group {
+    margin: 10px 0;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: none;
+}
+
+.form-group textarea {
+    height: 100px;
+}
+
+.form-group button {
+    background-color: #0074d9;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.form-group button[type="button"] {
+    background-color: #ccc;
+    margin-left: 10px;
+}
+
+#contact-button:hover {
+    opacity: 1;
+}
+
+#contact-form.active {
+    display: block;
+}
+
+#assist-toggle {
+    display: none;
+}
+
+#assist-button {
+    position: fixed;
+    top: 20px;
+    left: 6px;
+    background-color: #000;
+    color: #fff;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: opacity 0.3s;
+    z-index: 999;
+    -webkit-tap-highlight-color: transparent;
+}
+
+#assist-button p::before {
+    content: "\f0c9";
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    font-size: 30px;
+    font-display: swap;
+}
+
+#assist-toggle:checked + #assist-button p::before {
+    content: "\f00d";
+}
+
+#assist-toggle:checked + #assist-button + #assist-icons {
+    display: block;
+}
+
+#assist-icons {
+    display: none;
+    position: fixed;
+    top: 90px;
+    left: 12px;
+    z-index: 998;
+}
+
+#assist-icons a {
+    font-display: swap;
+    display: block;
+    background-color: #0077d9;
+    color: #fff;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    text-decoration: none;
+    transform: translateY(50px);
+    opacity: 0;
+    transition: transform 0.3s, opacity 0.3s;
+    -webkit-tap-highlight-color: transparent;
+}
+
+@keyframes pop-up {
+    0% {
+        transform: translateY(-55px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+#assist-icons a:nth-child(1) {
+    animation: pop-up 0.50s ease 0.20s forwards;
+}
+
+#assist-icons a:nth-child(2) {
+    animation: pop-up 0.45s ease 0.18s forwards;
+}
+
+#assist-icons a:nth-child(3) {
+    animation: pop-up 0.40s ease 0.16s forwards;
+}
+
+#assist-icons a:nth-child(4) {
+    animation: pop-up 0.35s ease 0.14s forwards;
+}
+
+#assist-icons a:nth-child(5) {
+    animation: pop-up 0.30s ease 0.12s forwards;
+}
+
+#assist-icons a:nth-child(6) {
+    animation: pop-up 0.25s ease 0.10s forwards;
+}
+
+#assist-icons a:nth-child(7) {
+    animation: pop-up 0.20s ease 0.08s forwards;
+}
+
+.tooltip::before {
+    content: attr(name);
+    display: block;
+    position: absolute;
+    background-color: #000;
+    color: #fff;
+    padding: 0 10px 0 10px;
+    border-radius: 10px;
+    min-width: 40px;
+    font-size: 10px;
+    text-align: center;
+    opacity: 0;
+    transform: translateX(50px);
+    transition: opacity 0s, transform 0.3s;
+    z-index: 1;
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+.tooltip:hover::before {
+    transform: translateX(50px);
+}
+
+.tooltip::after {
+  content: "";
+  position: absolute;
+  top: 30%;
+  left: 75%;
+  margin-left: 5px;
+  border-width: 8px;
+  border-style: solid;
+  visibility: hidden;
+  border-color: transparent #000 transparent transparent;
+}
+
+.tooltip:hover::before, .tooltip:hover::after {
+  opacity: 1;
+  visibility: visible;
+}
+
+#assist-icons a:hover {
+    background-color: #0056b3;
+}
+    </style>
+    <title>Home Page</title>
+    <link rel="icon" type="image/png" href="https://sites.ipagepro.com/minsky-cottone-cpas-pc/wp-content/uploads/sites/231/2022/12/google.png">
+    <meta http-equiv="Content-Encoding" content="br">
+</head>
+    <body>
+        <div id="intro-overlay">
+          <div id="intro-text"></div>
+        </div>
+        <div class="div-container">
+          <div class="new-menu">
+    <input type="checkbox" id="assist-toggle"> <!-- Hidden checkbox for assist toggle -->
+    <label for="assist-toggle" id="assist-button"> <!-- Assist button label -->
+        <p></p> <!-- Empty <i> tag for the FontAwesome icon -->
+    </label>
+    <div id="assist-icons">
+        <a href="/" class="tooltip" name="Home" aria-label="Home" aria-hidden="true"><i class="fas fa-home"></i></a>
+        <a href="/tutorial" class="tooltip" name="Tutorial" aria-label="Tutorial" aria-hidden="true"><i class="fa-brands fa-leanpub"></i></a>
+        <a href="/login" class="tooltip" name="Login" aria-label="Login" aria-hidden="true"><i class="fas fa-sign-in-alt"></i></a>
+        <a href="/bot" class="tooltip" name="Chatbot" aria-label="Chatbot" aria-hidden="true"><i class="fa-solid fa-robot"></i></a>
+        <a href="/details" class="tooltip" name="About" aria-label="About" aria-hidden="true"><i class="fa-solid fa-circle-info"></i></a>
+        <a id="contact-button" class="tooltip" name="Contact" aria-label="Contact" aria-hidden="true"><i class="fas fa-envelope"></i></a>
+        <a id="logout-link" class="tooltip" name="Logout" aria-label="Logout" aria-hidden="true"><i class="fas fa-sign-out-alt"></i></a>
+    </div>
+    </div>
+            <h3><strong class="ring"><span></span>Smart ChatBot</strong></h3>
+            <img class="nav-link" src="https://res.cloudinary.com/duvkd4zpx/image/upload/gio3zgqeq6ayn4jrzy7b" alt="jarvis" width="40" height="40" style="border-radius: 50%; object-fit: cover; margin-right: 6px;">
+        </div>
+        <div class="container-slide">
+        <div class="welcome-section">
+            <h1>Welcome To VXBot</h1>
+            <p>Your friendly VirtuXbot ready to assist you on your journey to innovation and productivity.</p>
+            <p>Explore our cutting-edge projects, achievements, and exciting journey in the world of virtual assistance.</p>
+            <p>Join us in shaping the future with advanced algorithms and innovative solutions. Connect with us, stay
+                informed, and experience the future with VXBot.</p>
+            <a href="/login" class="btn btn-primary btn-lg">Try Now</a>
+            <p class="point">Experience the future of virtual assistance!</p>
+        </div>
+    </div>
+<div class="gates-section">
+        <div class="gates-content">
+            <div class="gate">
+            <i class="fas fa-comments fa-4x"></i>
+            <h2 class="gate-caption">Enhanced Conversations</h2>
+        </div>
+        <div class="gate">
+            <i class="fas fa-users fa-4x"></i>
+            <h2 class="gate-caption">Customer Engagement</h2>
+        </div>
+        <div class="gate">
+            <i class="fas fa-clock fa-4x"></i>
+            <h2 class="gate-caption">24/7 Companion</h2>
+        </div>
+        <div class="gate">
+            <i class="fas fa-cogs fa-4x"></i>
+            <h2 class="gate-caption">Advanced Algorithms</h2>
+        </div>
+        <div class="gate">
+            <i class="fas fa-globe fa-4x"></i>
+            <h2 class="gate-caption">Exploring New Technologies</h2>
+        </div>
+        <div class="gate">
+            <i class="fas fa-chart-bar fa-4x"></i>
+            <h2 class="gate-caption">Data-Driven Insights</h2>
+        </div>
+        </div>
+    </div>
+<div class="info-section">
+    <h2>About Project</h2>
+    <p>
+        Welcome to VXBot, where innovation meets dedication. Our team of passionate students is committed to creating cutting-edge projects for both ourselves and the community. We believe in pushing boundaries and delivering excellence in every endeavor.
+    </p>
+    <p>
+        Explore our journey, achievements, and the motivation behind VXBot. Join us in the quest for innovation and discover the exciting world of virtual assistance with VXBot.
+    </p>
+    <p>
+        Our current projects include the development of advanced algorithms to enhance chatbot interactions. We're also actively exploring new technologies to expand the capabilities of virtual assistance.
+    </p>
+    <p>
+        At VXBot, we prioritize user feedback and continuously iterate on our projects to provide the best user experience. We're committed to staying at the forefront of technology and creating solutions that make a meaningful impact on users' lives.
+    </p>
+</div>
+
+<div class="info-section">
+    <h2>Contact Us</h2>
+    <p>
+        Got questions or inquiries? We're here to help! Feel free to reach out to us for any information or collaboration opportunities. Your feedback is valuable to us as we strive to improve and evolve.
+    </p>
+    <p>
+        Connect with us through the provided contact form, and we'll get back to you as soon as possible. Your satisfaction is our priority!
+    </p>
+</div>
+
+<div class="info-section">
+    <h2>Stay Connected</h2>
+    <p>
+        Stay in the loop with the latest updates and news from VXBot. Follow us on social media to be part of our vibrant community. Engage with us, share your thoughts, and be the first to know about exciting developments.
+    </p>
+    <p>
+        Join us on this journey and experience the future of virtual assistance. Your support fuels our passion for creating innovative solutions.
+    </p>
+    <a href="/details" class="btn btn-primary">Follow Us</a>
+</div>
+
+    <div class="contact-form" id="contact-form">
+        <h2>Contact Us</h2>
+        <form id="myForm" action="/submit_form" method="post">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" required></textarea>
+            </div>
+            <div class="form-group">
+                <button type="submit">Send</button>
+                <button type="button" id="close-button">Close</button>
+            </div>
+        </form>
+        <div id="messageDiv"></div>
+    </div>
+
+        <div id="custom-confirm-dialog" class="overlay">
+            <div class="custom-confirm-content">
+                <p>Are you sure you want to logout?</p>
+                <button id="confirm-logout">Yes</button>
+                <button id="cancel-logout">No</button>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Connect with us on social media:</p>
+               <!-- Social media icons using FontAwesome -->
+               <div class="social-media">
+                    <a href="https://github.com/404" aria-label="Facebook">
+                        <i class="fab fa-facebook fa-2x"></i>
+                    </a>
+                    <a href="https://github.com/404" aria-label="Twitter">
+                        <i class="fab fa-twitter fa-2x"></i>
+                    </a>
+                    <a href="https://github.com/404" aria-label="Instagram">
+                        <i class="fab fa-instagram fa-2x"></i>
+                    </a>
+                    <a href="https://github.com/404" aria-label="Discord">
+                        <i class="fab fa-discord fa-2x"></i>
+                    </a>
+                    <a href="https://github.com/404" aria-label="Snapchat">
+                        <i class="fab fa-snapchat fa-2x"></i>
+                    </a>
+                </div>
+            <p>MLRIT MINIPROJECT 2023</p>
+        </div>
+        <script>
+        document.addEventListener("DOMContentLoaded", function () {
+              var hasIntroBeenShown = getCookie("introShown");
+              if (!hasIntroBeenShown) {
+                var introText = "VXBOT";
+                var introTextElement = document.getElementById("intro-text");
+                var introOverlay = document.getElementById("intro-overlay");
+                function revealText(index) {
+                  if (index <= introText.length) {
+                    introTextElement.textContent = introText.substring(0, index);
+                    setTimeout(function () {
+                      revealText(index + 1);
+                    }, 60);
+                  } else {
+                    setTimeout(function () {
+                      introOverlay.style.opacity = "0";
+                    }, 900);
+                    setTimeout(function () {
+                      introOverlay.style.display = "none";
+                      setCookie("introShown", "true");
+                    }, 1400);
+                  }
+                }
+                revealText(0);
+              } else {
+                var introOverlay = document.getElementById("intro-overlay");
+                introOverlay.style.display = "none";
+              }
+        });
+
+        function displayMessage(message) {
+            const form = document.getElementById("myForm");
+            const messageDiv = document.getElementById("messageDiv");
+
+            messageDiv.textContent = message;
+            messageDiv.style.color = "green";
+            messageDiv.style.fontSize = "10px";
+
+            form.reset();
+            setTimeout(function () {
+               messageDiv.textContent= "";
+            }, 2000);
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const form = document.getElementById("myForm");
+
+            form.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            const formData = new FormData(form);
+
+            fetch("/submit_form", {
+               method: "POST",
+               body: formData
+            })
+            .then(response => response.text())
+            .then(data => {
+               displayMessage(data);
+            })
+            .catch(error => {
+               displayMessage("Data submission failed.");
+            });
+          });
+        });
+
+        function setCookie(name, value) {
+          document.cookie = name + "=" + value + "; path=/";
+        }
+
+        function getCookie(name) {
+          var cookies = document.cookie.split(";");
+          for (var i = 0; i < cookies.length; i++) {
+            var cookie = cookies[i].trim();
+            if (cookie.indexOf(name + "=") === 0) {
+              return cookie.substring(name.length + 1);
+            }
+          }
+          return null;
+        }
+
+        document.getElementById("contact-button").addEventListener("click", function() {
+           var contactForm = document.getElementById("contact-form");
+           contactForm.classList.toggle("active");
+        });
+
+        document.getElementById("close-button").addEventListener("click", function() {
+           var contactForm = document.getElementById("contact-form");
+           contactForm.classList.remove("active");
+        });
+
+        window.addEventListener('keydown', function (e) {
+            if (e.key === 'ArrowDown') {
+                window.scrollBy(0, 100);
+            }
+            if (e.key === 'ArrowUp') {
+                window.scrollBy(0, -100);
+            }
+        });
+
+        document.getElementById('logout-link').addEventListener('click', function () {
+            var isLogged = localStorage.getItem('isLogin');
+            if (isLogged === 'true') {
+                document.getElementById('custom-confirm-dialog').style.display = 'block';
+            } else {
+                alert("You are not logged in.");
+            }
+        });
+
+        document.getElementById('confirm-logout').addEventListener('click', function () {
+            localStorage.setItem('isLogin', 'false');
+            window.location.href = '/logout';
+        });
+
+        document.getElementById('cancel-logout').addEventListener('click', function () {
+            document.getElementById('custom-confirm-dialog').style.display = 'none';
+        })
+
+        function changeBackgroundColor() {
+            const colors = ["#3498db", "#e74c3c", "#2ecc71", "#f1c40f", "#9b59b6", "#ffa64d", "#34495e", "#e67e22", "#1abc9c", "#d35400", "#8e44ad", "#27ae60", "#c0392b", "#2980b9", "#f39c12", "#7f8c8d", "#e74c3c", "#f1c40f", "#3498db", "#16a085"];
+
+            const body = document.body;
+            const interval = 3000;
+            let index = 0;
+            function updateColor() {
+                body.style.backgroundColor = colors[index];
+                index = (index + 1) % colors.length;
+            }
+
+            updateColor();
+            setInterval(updateColor, interval);
+        }
+
+        changeBackgroundColor();
+        </script>
+    </body>
+</html>
